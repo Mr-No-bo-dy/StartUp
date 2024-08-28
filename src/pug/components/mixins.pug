@@ -1,0 +1,73 @@
+mixin headerMenu(items) 
+   .hamburger 
+      span 
+   ul.header_menu.flex
+      for item in items 
+         li
+            a(href=item.url) #{item.name} 
+
+mixin figureServices(item) 
+   figure(class="card")
+      figcaption 
+         picture
+            //- source(srcset=item.src + ".webp" type="image/webp") 
+            img(src=item.src + ".png" alt=item.alt) 
+         h3= item.title
+         p= item.description
+
+mixin figureAboutUs(item) 
+   figure(class="cardDev")
+      figcaption 
+         .pic.flex.justify_center
+            picture
+               source(srcset=item.src + ".webp" type="image/webp") 
+               img(src=item.src + ".jpg" alt=item.alt) 
+            .socials 
+               a(href=item.facebook) 
+                  img(src="img/social_facebook.png", alt="facebook page")
+               a(href=item.twitter) 
+                  img(src="img/social_twitter.png", alt="twitter page")
+               a(href=item.google) 
+                  img(src="img/social_google.png", alt="google page")
+               a(href=item.linkedin) 
+                  img(src="img/social_linkedin.png", alt="linkedin page")
+         h3= item.name
+         p= item.position
+
+mixin cardsWorks(items)
+   for item in items 
+      //- .cardWork.relative
+      //-    picture
+      //-       source(srcset=item.src + ".webp" type="image/webp") 
+      //-       img(src=item.src + ".jpg" alt=item.alt) 
+      //-    .cardInfoBlock.absolute.flex.justify_center
+      //-       .cardInfo
+      //-          h3= item.title
+      //-          p= item.desc
+      //-          a(href=item.href) View
+      .cardWork(style="background-image: url(" + item.src + ".jpg)")
+         .cardInfoBlock.flex.justify_center
+            .cardInfo
+               h3= item.title
+               p= item.category
+               a(href=item.href).relative View
+
+mixin post(item)
+   .post.flex.items_stretch
+      picture
+         source(srcset=item.src + ".webp" type="image/webp") 
+         img(src=item.src + ".jpg" alt=item.alt) 
+      .post_itself 
+         .flex 
+            .data
+               p= item.dateDay
+               p.month= item.dateMonth
+            .title_block
+               h3= item.title
+               p.by by 
+                  span.author= item.author 
+                  span &nbsp;in 
+                  span.status= item.status
+         p.text= item.text
+         p 
+            a(href="#").readMore Read more 

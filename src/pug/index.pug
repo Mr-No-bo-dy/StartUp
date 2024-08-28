@@ -1,0 +1,172 @@
+include components/vars
+include components/mixins
+
+doctype html
+html(lang="en")
+   head
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible" content="IE=edge")
+      meta(name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0")
+      link(rel="preconnect" href="https://fonts.googleapis.com")
+      link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+      link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet")
+      link(rel="stylesheet" href="css/styles.css")
+      link(rel="shortcut icon", href="img/js-ico.svg", type="image/x-icon")
+      title StartUp - Your Favourite Creative Agency
+   body
+      header#header.header.relative
+         .header_line.fixed 
+            .wrapper 
+               .flex 
+                  .logo
+                     h1 
+                        a(href="/") Startup
+                  nav 
+                     +headerMenu(navMenu)
+
+      main.main 
+         section#home.home.flex 
+            .wrapper 
+               h2 Welcome to STARTUP
+               p.title_desc Your Favourite Creative Agency Template
+               button.btn(id="getStarted" type="button") Get Started
+
+         section#services.services 
+            .wrapper
+               h2 Services
+               .flex.justify_center
+                  hr
+               p.title_desc We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+               .flex
+                  +figureServices(cardServices.typography) 
+                  +figureServices(cardServices.code) 
+                  +figureServices(cardServices.support) 
+
+         section#aboutus.aboutus
+            .wrapper
+               h2 About us
+               .flex.justify_center
+                  hr
+               p.title_desc Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+               .aboutus_desc.flex
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+               .flex
+                  +figureAboutUs(cardAboutUs.first)
+                  +figureAboutUs(cardAboutUs.second)
+                  +figureAboutUs(cardAboutUs.third)
+                  +figureAboutUs(cardAboutUs.fourth)
+                  //- +figureAboutUs(cardAboutUs.Fifth)
+
+         section#works.works
+            .wrapper
+               h2 Latest Works
+               .flex.justify_center
+                  hr
+               p.title_desc.flex.justify_center
+                  a(href="#") All
+                  a(href="#") Branding
+                  a(href="#") Design
+                  a(href="#") Development
+                  a(href="#") Strategy
+               .cards.grid.justify_center.items_stretch
+                  +cardsWorks(cardWorks)
+
+         #getInTouch.getInTouch
+            .wrapper 
+               //- p Do you like OUR WORK so far?
+               //- p Let's talk about YOUR PROJECT!
+               p Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
+               button.btn(id="getInTouchBtn" type="button") Get in Touch
+
+         section#blog.blog
+            .wrapper
+               h2 Recent blog posts
+               .flex.justify_center
+                  hr
+               p.title_desc.flex.justify_center Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+               .posts 
+                  +post(posts.first)
+                  hr
+                  +post(posts.second)
+
+         section#clients.clients
+            .wrapper
+               .brands.flex.justify_center.gap_6
+                  img(src="img/brand_1.png", alt="brand deorham")
+                  img(src="img/brand_2.png", alt="brand ratings")
+                  img(src="img/brand_3.png", alt="brand malik media")
+                  img(src="img/brand_4.png", alt="brand bcause")
+                  img(src="img/brand_5.png", alt="brand womgify")
+               .reviews
+                  .review
+                     p.comment Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
+                     p.reviewer John Doe, Google Inc.
+                  //- .review
+                  //-    p.comment Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam excepturi expedita facilis dolorem dolore aliquid cum iure eum tempore voluptate.”
+                  //-    p.reviewer Jane Doe, Apple
+                  //- .review
+                  //-    p.comment Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel sed sit, quo sunt reiciendis fugit?”
+                  //-    p.reviewer James Doe, HP
+               .markers 
+                  span
+
+         section#contacts.contacts
+            .wrapper
+               h2 Get in touch
+               .flex.justify_center
+                  hr
+               p.title_desc Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+               .contact_block.grid.grid_1_2.items_stretch 
+                  .contact.text-left
+                     .address
+                        h3 Address
+                        p 
+                           | 312, 7th Ave, New York
+                           br
+                           | NY 101200, United States of America
+                     .phone
+                        h3 Hotline (24x7)
+                        p 
+                           a(href="tel:650052300") +65 0052 300
+                           | ,&nbsp;
+                           a(href="tel:6588251210") +65 88251 210 
+                           br
+                           a(href="tel:8801723511340") +88 01723 511 340
+                     .mail
+                        h3 E-mail
+                        p 
+                           a(href="mailto:shapedtheme@gmail.com ")  shapedtheme@gmail.com 
+                           br
+                           a(href="mailto:khalilkode@gmail.com")  khalilkode@gmail.com
+                  form(action="" method="post").contact_form 
+                     .form_row.flex
+                        input(type="text" name="name" placeholder="Your Name")
+                        input(type="email" name="email" placeholder="Your E-mail")
+                     .form_row.flex
+                        input(type="text" name="subject" placeholder="Your subject")
+                        input(type="text" name="company" placeholder="Company name")
+                     .ta
+                        textarea(name="message" placeholder="Write your message") 
+                     .tr.flex.justify_start
+                        button(type="submit").btn Send message
+                        p.nota 
+                           span *
+                           | &nbsp;We’ll contact you as as possible. We don’t reply on Monday.
+
+      footer.footer 
+         .wrapper 
+            .socials.flex.justify_center
+               a(href="fb_link").flex.justify_center
+                  img(src="img/social_facebook.png", alt="social facebook")
+               a(href="google_link").flex.justify_center
+                  img(src="img/social_google.png", alt="social google+")
+               a(href="linkedin_link").flex.justify_center
+                  img(src="img/social_linkedin.png", alt="social linkedin")
+               a(href="xwitter_ink").flex.justify_center
+                  img(src="img/social_twitter.png", alt="social xwitter")
+            .flex.justify_center
+               hr
+            p.title_desc.copywright &copy; 2024 Startup, Designed by Khalturshchyk
+
+      script(src="js/scripts.js")

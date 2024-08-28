@@ -1,0 +1,455 @@
+@import components/vars_mixins
+
+*
+   margin: 0
+   box-sizing: border-box
+   font-size: 12rem
+
+html
+   font-size: 1px
+   scroll-behavior: smooth
+
+body
+   color: $colorMain
+   font-family: "Montserrat", Arial, "Helvetica Neue", Helvetica, sans-serif
+   text-align: center
+
+ul
+   padding: 0
+   list-style-type: none
+
+a 
+   display: inline-block
+   text-decoration: none
+   transition: .3s
+
+img
+   vertical-align: bottom
+
+.wrapper
+   margin: auto
+   padding: 0 15rem
+   width: 90%
+   max-width: 1170rem
+
+.relative
+   position: relative
+
+.absolute
+   position: absolute
+   top: 0
+   left: 0
+
+.fixed
+   position: fixed
+
+.flex
+   display: flex
+   align-items: center
+   justify-content: space-between
+   column-gap: 30rem
+   row-gap: 30rem
+
+.grid 
+   display: grid
+   grid-template-columns: 1fr 1fr 1fr
+   align-items: center
+   gap: 30rem
+
+.grid_1_2
+   grid-template-columns: 1fr 2fr
+
+.items_stretch
+   align-items: stretch
+
+.justify_center
+   justify-content: center
+
+.justify_start
+   justify-content: flex-start
+
+.gap_6 
+   column-gap: 60rem
+
+.btn
+   padding: 15rem
+   min-width: 180rem
+   color: $colorSecondary
+   font-size: 16rem
+   text-transform: uppercase
+   background-color: transparent
+   border-radius: 2px
+   border: 2px solid $colorSecondary
+   transition: .3s
+   cursor: pointer
+   &:hover
+      color: $colorHover
+      background-color: $bgColorMain
+
+.text-left
+   text-align: left
+
+.header
+   .header_line
+      top: 0
+      z-index: 10
+      padding: 30rem 0
+      width: 100%
+      background-color: $bgColorSecondary
+   h1 a 
+      color: $colorSecondary
+      font-weight: 700
+      font-size: 24rem
+      line-height: 1.5em
+   h1:hover a
+      transform: scale(1.15)
+   .header_menu a
+      color: $colorSecondary
+      font-size: 14rem
+      line-height: 1.7em
+      &:hover
+         transform: scale(1.15)
+
+.home
+   padding-top: 96rem
+   min-height: 674rem
+   color: $colorSecondary
+   text-align: center
+   background: $bgColorSecondary url(../img/bg_home.jpg) no-repeat center/cover
+   h2
+      font-size: 48rem
+      text-transform: uppercase
+   p
+      margin: 30rem 0 45rem
+      font-size: 24rem
+      font-family: $fontSecondary
+
+h2
+   font-size: 20rem
+   line-height: 1.2em
+   text-transform: uppercase
+hr
+   margin: 20rem 0
+   width: 50rem
+   border: none
+   border-top: 2px solid $colorMain
+p.title_desc
+   font-size: 16rem
+   line-height: 1.5em
+   font-family: $fontSecondary
+
+.services
+   padding: 95rem 0 85rem
+   figure
+      transition: .3s
+      h3
+         font-size: 14rem
+         line-height: 1.7em
+         margin: 25rem 0 20rem
+         text-transform: uppercase
+      p
+         font-size: 14rem
+         line-height: 1.7em
+.services
+   figure
+      margin-top: 55rem
+      padding: 15rem
+      border-radius: 3px
+      cursor: pointer
+      &:hover
+         box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+      // img 
+      //    border-radius: 50%
+      //    border: 2px solid #ddd
+
+.aboutus
+   padding: 95rem 0 90rem
+   background-color: #f8f8f8
+   .aboutus_desc p
+      margin: 60rem 0
+      text-align: left
+      font-size: 14rem
+      line-height: 1.7em
+      font-family: $fontSecondary
+   .pic
+      position: relative
+      text-align: center
+      & img
+         transition: .3s
+      &:hover img
+         filter: contrast(115%)
+      &:hover .socials
+         display: block
+      .socials 
+         display: none
+         position: absolute
+         bottom: 30rem
+         a
+            display: inline-block
+            padding: 7rem
+            &:hover
+               background-color: $colorHover
+   figure
+      h3 
+         margin: 15rem 0 10rem
+         font-size: 14rem
+         line-height: 1.7em
+         text-transform: uppercase
+         font-family: "Myriad Pro", "Montserrat", Arial
+      p
+         font-size: 13rem
+         line-height: 1.85em
+         font-family: $fontSecondary
+
+.works 
+   padding: 90rem 0
+   .title_desc 
+      margin-bottom: 55rem
+      a 
+         color: $colorMain
+         font-size: 16rem
+         &:hover
+            color: $colorHover
+   // .cardWork:hover .cardInfoBlock
+   //    display: flex
+   //    z-index: 1
+   // .cardInfoBlock
+   //    display: none
+   //    width: 100%
+   //    height: 100%
+   .cardWork
+      min-width: 360rem
+      min-height: 320rem
+      &:hover .cardInfoBlock
+         display: flex
+.cardInfoBlock
+   display: none
+   width: 100%
+   height: 100%
+   color: $colorSecondary
+   background-color: $bgColorSecondary
+   h3
+      font-size: 18rem
+      line-height: 1.33em
+   p 
+      margin: 3rem 0 10rem
+      font-size: 12rem
+      line-height: 2em
+      font-family: $fontSecondary
+   a 
+      display: inline-block
+      padding: 12rem 25rem 12rem 12rem
+      min-width: 100rem
+      color: $colorSecondary
+      font-size: 14rem
+      text-transform: uppercase
+      border: 1px solid $colorSecondary
+      &::after
+         content: ''
+         position: absolute
+         display: inline-block
+         width: 5px
+         height: 5px
+         top: calc(50% - 3.5px)
+         right: 22rem
+         border-top: 2px solid $colorSecondary
+         border-right: 2px solid $colorSecondary
+         transform: rotate(45deg)
+      &:hover
+         color: $colorHover
+         background-color: $bgColorMain
+      &:hover::after
+         border-color: $colorHover
+
+.getInTouch
+   padding: 90rem 0
+   background: $bgColorMain url(../img/bg_getInTouch.jpg) no-repeat center/cover
+   p
+      margin: 0 auto 40rem
+      // margin: auto
+      max-width: 460rem
+      font-size: 30rem
+      line-height: 1.5em
+      color: $colorSecondary
+      font-family: $fontSecondary
+      // &:last-child
+         // margin-bottom: 40rem
+
+.blog
+   padding: 90rem 0
+   .posts
+      margin-top: 60rem
+      hr
+         margin: 40rem 0
+         width: 100%
+         border-top: 1px solid #ddd
+.post
+   column-gap: 40rem
+   text-align: left
+   &:hover h3,
+   &:hover .readMore,
+   &:hover .author,
+   &:hover .status
+      color: $colorHover
+   .flex
+      justify-content: flex-start
+   .data
+      padding: 15rem
+      width: 75rem
+      height: 75rem
+      text-align: center
+      background-color: #f8f8f8
+      border: 2px solid $colorMain
+      p
+         color: $colorThird
+         font-weight: 700
+         font-size: 24rem
+         letter-spacing: 2px
+         text-transform: uppercase
+      .month
+         font-size: 16rem
+   h3 
+      color: $colorMain
+      font-size: 16rem
+      line-height: 1.5em
+      text-transform: uppercase
+   .by
+      color: $colorThird
+      font-size: 13rem
+      line-height: 1.85em
+      font-style: italic
+   .text
+      margin: 20rem 0 30rem
+      color: $colorMain
+      font-size: 14rem
+      line-height: 1.7em
+   .readMore
+      color: $colorThird
+      font-weight: 700
+      font-size: 13rem
+      line-height: 1.85em
+      letter-spacing: 1px
+      text-transform: uppercase
+      transition: .3s
+      &:hover
+         transform: scale(1.05)
+
+.clients
+   padding: 90rem 0
+   background-color: #f8f8f8
+.review
+   font-family: $fontSecondary
+   p
+      color: $colorMain
+      font-size: 18rem
+      line-height: 1.67em
+   .comment
+      margin: 50rem auto 30rem
+      max-width: 750rem
+      font-style: italic
+   .reviewer
+      font-size: 20rem
+
+.contacts
+   padding: 90rem 0 60rem
+   .contact_block
+      margin-top: 60rem
+.contact 
+   color: $colorMain
+   h3
+      position: relative
+      font-family: "Myriad Pro", $fontSecondary
+      font-weight: normal
+      font-size: 14rem
+      text-transform: uppercase
+      &::before
+         content: ''
+         position: absolute
+         top: -2rem
+         left: -30rem
+         display: inline-block
+   .address h3::before 
+      width: 12px
+      height: 17px
+      background-image: url(../img/ico_address.png)
+   .phone h3::before 
+      width: 13px
+      height: 20px
+      background-image: url(../img/ico_phone.png)
+   .mail h3::before 
+      top: 2rem
+      width: 16px
+      height: 11px
+      background-image: url(../img/ico_mail.png)
+   p
+      margin: 15rem 0 30rem
+      font-family: $fontSecondary
+      font-size: 12rem
+      line-height: 1.67em
+      a 
+         color: $colorMain
+         &:hover
+            color: $colorHover
+.contact_form
+   font-family: "Myriad Pro", $fontSecondary
+   &>*
+      margin-bottom: 20rem
+   .form_row
+      row-gap: 20rem
+      column-gap: 30rem
+   .form_row>*
+      width: 50%
+   input, textarea
+      display: block
+      width: 100%
+      padding: 15rem
+      color: $colorMain
+      text-transform: uppercase
+      background-color: $bgColorMain
+      outline: none
+      border: 1px solid $colorMain
+      &:hover,
+      &:focus
+         color: #000
+         border-color: $colorHover
+      &::placeholder
+         color: $colorMain
+   textarea
+      resize: vertical
+      min-height: 105rem
+      max-height: 150rem
+   .btn
+      color: $colorMain
+      border: 1px solid $colorMain
+      &:hover
+         color: $colorHover
+         border: 1px solid $colorHover
+   .nota
+      color: $colorMain
+      font-size: 12rem
+      line-height: 1.67rem
+      font-family: $fontSecondary
+      span
+         color: $colorHover
+
+.footer
+   padding: 100rem 0 90rem
+   color: $bgColorMain
+   background-color: $colorHover
+   .socials
+      column-gap: 15rem
+   a
+      display: flex
+      width: 36px
+      height: 36px
+      border-radius: 50%
+      border: 2px solid $bgColorMain
+      &:hover
+         transform: scale(1.1)
+   hr
+      border-color: $bgColorMain
+   p
+      font-size: 12rem
+      line-height: 1.67em
+      text-transform: uppercase
+      font-family: $fontSecondary
