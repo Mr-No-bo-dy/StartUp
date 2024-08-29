@@ -6,12 +6,26 @@
    font-size: 12rem
 
 html
-   font-size: 1px
+   font-size: 0.5px
+   +media(500) 
+      font-size: 0.6px
+   +media(768) 
+      font-size: 0.7px
+   +media(1024) 
+      font-size: 0.8px
+   +media(1280) 
+      font-size: 0.9px
+   +media(1600) 
+      font-size: 1px
+   +media(1920) 
+      font-size: 1.1px
+   +media(2560) 
+      font-size: 1.2px
    scroll-behavior: smooth
 
 body
    color: $colorMain
-   font-family: "Montserrat", Arial, "Helvetica Neue", Helvetica, sans-serif
+   font-family: $fontMain
    text-align: center
 
 ul
@@ -28,9 +42,12 @@ img
 
 .wrapper
    margin: auto
-   padding: 0 15rem
-   width: 90%
-   max-width: 1170rem
+   padding: 0 15px
+   max-width: 1200px
+   width: calc(90% + 30rem)
+
+.over_hidden
+   overflow: hidden
 
 .relative
    position: relative
@@ -45,6 +62,7 @@ img
 
 .flex
    display: flex
+   flex-wrap: wrap
    align-items: center
    justify-content: space-between
    column-gap: 30rem
@@ -52,12 +70,13 @@ img
 
 .grid 
    display: grid
-   grid-template-columns: 1fr 1fr 1fr
+   grid-template-columns: 1fr
+   +media(835)
+      grid-template-columns: 1fr 1fr
+   +media(1280)
+      grid-template-columns: 1fr 1fr 1fr
    align-items: center
    gap: 30rem
-
-.grid_1_2
-   grid-template-columns: 1fr 2fr
 
 .items_stretch
    align-items: stretch
@@ -67,9 +86,6 @@ img
 
 .justify_start
    justify-content: flex-start
-
-.gap_6 
-   column-gap: 60rem
 
 .btn
    padding: 15rem
@@ -103,12 +119,74 @@ img
       line-height: 1.5em
    h1:hover a
       transform: scale(1.15)
-   .header_menu a
-      color: $colorSecondary
-      font-size: 14rem
-      line-height: 1.7em
-      &:hover
-         transform: scale(1.15)
+
+.hamburger
+   display: block
+   +media(500)
+      display: none
+   position: relative
+   width: 30px
+   height: 25px
+   cursor: pointer
+   &:hover span, 
+   &:hover span::before, 
+   &:hover span::after
+      background-color: $colorHover
+   span, span::before, span::after
+      content: ""
+      position: absolute
+      width: 30px
+      height: 3px
+      top: calc(50% - 1px)
+      left: 0
+      background-color: $bgColorMain
+      transition: .3s
+   span::before
+      top: -10px
+   span::after
+      top: 10px
+.hamburger_open span,
+.hamburger_open:hover span
+   background-color: transparent
+.hamburger_open span:before 
+   top: 0
+   transform: rotate(135deg)
+.hamburger_open span:after 
+   top: -0
+   transform: rotate(-135deg)
+
+.nav
+   +mediaMax(499)
+      position: fixed
+      top: calc(25px + 60rem)
+      left: 100%
+      right: 0
+      z-index: 10
+      width: 100%
+      height: 100%
+      transition: .5s
+.nav_mobile
+   +mediaMax(499)
+      left: 0
+      text-align: right
+      background-color: $bgColorSecondary
+      .header_menu
+         display: block
+         padding: 0 5%
+         a
+            padding: 25rem 15rem
+            font-size: 18px
+
+.header_menu
+   display: none
+   +media(500)
+      display: flex
+.header_menu a
+   color: $colorSecondary
+   font-size: 16rem
+   line-height: 1.7em
+   &:hover
+      transform: scale(1.15)
 
 .home
    padding-top: 96rem
@@ -140,8 +218,21 @@ p.title_desc
 
 .services
    padding: 95rem 0 85rem
+   .figures
+      margin-top: 55rem
    figure
+      margin: auto
+      padding: 15rem
+      width: 90%
+      +media(768)
+         width: 45%
+      +media(1280)
+         width: 30%
+      max-width: 560rem
+      border-radius: 3px
       transition: .3s
+      &:hover
+         box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
       h3
          font-size: 14rem
          line-height: 1.7em
@@ -150,31 +241,29 @@ p.title_desc
       p
          font-size: 14rem
          line-height: 1.7em
-.services
-   figure
-      margin-top: 55rem
-      padding: 15rem
-      border-radius: 3px
-      cursor: pointer
-      &:hover
-         box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
-      // img 
-      //    border-radius: 50%
-      //    border: 2px solid #ddd
 
 .aboutus
    padding: 95rem 0 90rem
-   background-color: #f8f8f8
-   .aboutus_desc p
+   background-color: $bgColorThird
+   .aboutus_desc 
       margin: 60rem 0
-      text-align: left
-      font-size: 14rem
-      line-height: 1.7em
-      font-family: $fontSecondary
+      +media(625)
+         justify-content: space-between
+      p
+         width: 100%
+         +media(625)
+            width: 47%
+         text-align: left
+         font-size: 14rem
+         line-height: 1.7em
+         font-family: $fontSecondary
+   .devs
+      +media(618)
+         justify-content: space-around
+      +media(1256)
+         justify-content: space-between
    .pic
-      position: relative
-      text-align: center
-      & img
+      img
          transition: .3s
       &:hover img
          filter: contrast(115%)
@@ -210,18 +299,18 @@ p.title_desc
          font-size: 16rem
          &:hover
             color: $colorHover
-   // .cardWork:hover .cardInfoBlock
-   //    display: flex
-   //    z-index: 1
-   // .cardInfoBlock
-   //    display: none
-   //    width: 100%
-   //    height: 100%
+            transform: scale(1.1)
    .cardWork
-      min-width: 360rem
-      min-height: 320rem
+      margin: auto
+      max-width: 360px
       &:hover .cardInfoBlock
          display: flex
+         z-index: 1
+   img 
+      display: inline-block
+      width: 100%
+      height: 100%
+
 .cardInfoBlock
    display: none
    width: 100%
@@ -266,14 +355,11 @@ p.title_desc
    background: $bgColorMain url(../img/bg_getInTouch.jpg) no-repeat center/cover
    p
       margin: 0 auto 40rem
-      // margin: auto
       max-width: 460rem
       font-size: 30rem
       line-height: 1.5em
       color: $colorSecondary
       font-family: $fontSecondary
-      // &:last-child
-         // margin-bottom: 40rem
 
 .blog
    padding: 90rem 0
@@ -284,13 +370,29 @@ p.title_desc
          width: 100%
          border-top: 1px solid #ddd
 .post
-   column-gap: 40rem
+   justify-content: center
+   column-gap: 20rem
+   +media(1024)
+      justify-content: space-between
+      column-gap: 40rem
    text-align: left
    &:hover h3,
    &:hover .readMore,
    &:hover .author,
    &:hover .status
       color: $colorHover
+   picture
+      width: auto
+      +media(1024)
+         width: calc((100% - 40rem) * 0.4)
+   img 
+      display: inline-block
+      width: 100%
+      height: 100%
+.post_itself
+   width: 100%
+   +media(1024)
+      width: calc((100% - 40rem) * 0.6)
    .flex
       justify-content: flex-start
    .data
@@ -298,7 +400,7 @@ p.title_desc
       width: 75rem
       height: 75rem
       text-align: center
-      background-color: #f8f8f8
+      background-color: $bgColorThird
       border: 2px solid $colorMain
       p
          color: $colorThird
@@ -336,7 +438,9 @@ p.title_desc
 
 .clients
    padding: 90rem 0
-   background-color: #f8f8f8
+   background-color: $bgColorThird
+   .brands
+      column-gap: 60rem
 .review
    font-family: $fontSecondary
    p
@@ -354,8 +458,26 @@ p.title_desc
    padding: 90rem 0 60rem
    .contact_block
       margin-top: 60rem
+      justify-content: center
+      +media(571)
+         justify-content: space-between
 .contact 
+   display: flex
+   flex-wrap: wrap
+   column-gap: 30rem
+   row-gap: 20rem
+   justify-content: center
+   +media(571)
+      display: block
+   width: auto
+   +media(571)
+      width: calc((100% - 30rem) / 3)
    color: $colorMain
+   &>*
+      padding-left: 30rem
+      +mediaMax(571)
+         padding-left: 20px
+         min-width: 130rem
    h3
       position: relative
       font-family: "Myriad Pro", $fontSecondary
@@ -367,6 +489,8 @@ p.title_desc
          position: absolute
          top: -2rem
          left: -30rem
+         +mediaMax(571)
+            left: -20px
          display: inline-block
    .address h3::before 
       width: 12px
@@ -390,21 +514,34 @@ p.title_desc
          color: $colorMain
          &:hover
             color: $colorHover
+            transform: scale(1.07)
+
 .contact_form
+   width: auto
+   +media(571)
+      width: calc((100% - 30rem) * 2 / 3)
    font-family: "Myriad Pro", $fontSecondary
    &>*
       margin-bottom: 20rem
    .form_row
+      flex-direction: column
+      flex-wrap: wrap
+      +media(768)
+         flex-direction: row
+         flex-wrap: nowrap
+      align-items: stretch
       row-gap: 20rem
       column-gap: 30rem
    .form_row>*
-      width: 50%
+      +media(768)
+         width: calc((100% - 30rem) / 2)
+   label
+      min-width: 100px
    input, textarea
       display: block
       width: 100%
       padding: 15rem
       color: $colorMain
-      text-transform: uppercase
       background-color: $bgColorMain
       outline: none
       border: 1px solid $colorMain
@@ -414,10 +551,12 @@ p.title_desc
          border-color: $colorHover
       &::placeholder
          color: $colorMain
+         text-transform: uppercase
    textarea
       resize: vertical
       min-height: 105rem
-      max-height: 150rem
+      max-height: 200rem
+      text-transform: none
    .btn
       color: $colorMain
       border: 1px solid $colorMain

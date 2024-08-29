@@ -5,10 +5,16 @@ $colorThird: #777777
 $colorHover: #c0301c
 $bgColorMain: #ffffff
 $bgColorSecondary: rgba(192, 48, 28, 0.702)
-// $fontMain: "Montserrat", Arial, "Helvetica Neue", Helvetica, sans-serif
+$bgColorThird: #f8f8f8
+$fontMain: "Montserrat", Arial, "Helvetica Neue", Helvetica, sans-serif
 $fontSecondary: "Roboto Slab", "Montserrat", Arial
+
 
 // Mixins
 =media($size)
    @media screen and (min-width: #{$size}px)
+      @content
+
+=mediaMax($size)
+   @media screen and (max-width: #{$size}px)
       @content

@@ -1,16 +1,16 @@
 mixin headerMenu(items) 
-   .hamburger 
+   div.hamburger 
       span 
-   ul.header_menu.flex
-      for item in items 
-         li
-            a(href=item.url) #{item.name} 
+   nav.nav
+      ul.header_menu.flex
+         for item in items 
+            li
+               a(href=item.url) #{item.name} 
 
 mixin figureServices(item) 
    figure(class="card")
       figcaption 
          picture
-            //- source(srcset=item.src + ".webp" type="image/webp") 
             img(src=item.src + ".png" alt=item.alt) 
          h3= item.title
          p= item.description
@@ -18,7 +18,7 @@ mixin figureServices(item)
 mixin figureAboutUs(item) 
    figure(class="cardDev")
       figcaption 
-         .pic.flex.justify_center
+         .pic.flex.justify_center.relative
             picture
                source(srcset=item.src + ".webp" type="image/webp") 
                img(src=item.src + ".jpg" alt=item.alt) 
@@ -36,17 +36,11 @@ mixin figureAboutUs(item)
 
 mixin cardsWorks(items)
    for item in items 
-      //- .cardWork.relative
-      //-    picture
-      //-       source(srcset=item.src + ".webp" type="image/webp") 
-      //-       img(src=item.src + ".jpg" alt=item.alt) 
-      //-    .cardInfoBlock.absolute.flex.justify_center
-      //-       .cardInfo
-      //-          h3= item.title
-      //-          p= item.desc
-      //-          a(href=item.href) View
-      .cardWork(style="background-image: url(" + item.src + ".jpg)")
-         .cardInfoBlock.flex.justify_center
+      .cardWork.relative
+         picture
+            source(srcset=item.src + ".webp" type="image/webp") 
+            img(src=item.src + ".jpg" alt=item.alt) 
+         .cardInfoBlock.absolute.flex.justify_center
             .cardInfo
                h3= item.title
                p= item.category

@@ -21,7 +21,7 @@ html(lang="en")
                   .logo
                      h1 
                         a(href="/") Startup
-                  nav 
+                  .navigation 
                      +headerMenu(navMenu)
 
       main.main 
@@ -37,7 +37,7 @@ html(lang="en")
                .flex.justify_center
                   hr
                p.title_desc We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
-               .flex
+               .figures.flex
                   +figureServices(cardServices.typography) 
                   +figureServices(cardServices.code) 
                   +figureServices(cardServices.support) 
@@ -48,10 +48,10 @@ html(lang="en")
                .flex.justify_center
                   hr
                p.title_desc Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-               .aboutus_desc.flex
+               .aboutus_desc.flex.justify_center
                   p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
                   p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
-               .flex
+               .devs.flex.justify_center
                   +figureAboutUs(cardAboutUs.first)
                   +figureAboutUs(cardAboutUs.second)
                   +figureAboutUs(cardAboutUs.third)
@@ -69,13 +69,11 @@ html(lang="en")
                   a(href="#") Design
                   a(href="#") Development
                   a(href="#") Strategy
-               .cards.grid.justify_center.items_stretch
+               .cards.grid
                   +cardsWorks(cardWorks)
 
          #getInTouch.getInTouch
             .wrapper 
-               //- p Do you like OUR WORK so far?
-               //- p Let's talk about YOUR PROJECT!
                p Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
                button.btn(id="getInTouchBtn" type="button") Get in Touch
 
@@ -92,7 +90,7 @@ html(lang="en")
 
          section#clients.clients
             .wrapper
-               .brands.flex.justify_center.gap_6
+               .brands.flex.justify_center
                   img(src="img/brand_1.png", alt="brand deorham")
                   img(src="img/brand_2.png", alt="brand ratings")
                   img(src="img/brand_3.png", alt="brand malik media")
@@ -117,7 +115,7 @@ html(lang="en")
                .flex.justify_center
                   hr
                p.title_desc Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-               .contact_block.grid.grid_1_2.items_stretch 
+               .contact_block.flex.items_stretch 
                   .contact.text-left
                      .address
                         h3 Address
@@ -141,13 +139,18 @@ html(lang="en")
                            a(href="mailto:khalilkode@gmail.com")  khalilkode@gmail.com
                   form(action="" method="post").contact_form 
                      .form_row.flex
-                        input(type="text" name="name" placeholder="Your Name")
-                        input(type="email" name="email" placeholder="Your E-mail")
+                        label
+                           input(type="text" name="name" placeholder="Your Name")
+                        label
+                           input(type="email" name="email" placeholder="Your E-mail")
                      .form_row.flex
-                        input(type="text" name="subject" placeholder="Your subject")
-                        input(type="text" name="company" placeholder="Company name")
+                        label
+                           input(type="text" name="subject" placeholder="Your subject")
+                        label
+                           input(type="text" name="company" placeholder="Company name")
                      .ta
-                        textarea(name="message" placeholder="Write your message") 
+                        label
+                           textarea(name="message" placeholder="Write your message") 
                      .tr.flex.justify_start
                         button(type="submit").btn Send message
                         p.nota 

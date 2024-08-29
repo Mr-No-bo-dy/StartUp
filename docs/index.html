@@ -19,18 +19,20 @@
             <div class="logo">
               <h1> <a href="/">Startup</a></h1>
             </div>
-            <nav> 
+            <div class="navigation"> 
               <div class="hamburger"> <span> </span></div>
-              <ul class="header_menu flex">
-                <li><a href="#header">Home </a></li>
-                <li><a href="#services">Services </a></li>
-                <li><a href="#about">About </a></li>
-                <li><a href="#works">Works </a></li>
-                <li><a href="#blog">Blog </a></li>
-                <li><a href="#clients">Clients </a></li>
-                <li><a href="#contacts">Contacts </a></li>
-              </ul>
-            </nav>
+              <nav class="nav">
+                <ul class="header_menu flex">
+                  <li><a href="#header">Home </a></li>
+                  <li><a href="#services">Services </a></li>
+                  <li><a href="#aboutus">About </a></li>
+                  <li><a href="#works">Works </a></li>
+                  <li><a href="#blog">Blog </a></li>
+                  <li><a href="#clients">Clients </a></li>
+                  <li><a href="#contacts">Contacts </a></li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
@@ -50,7 +52,7 @@
             <hr>
           </div>
           <p class="title_desc">We offer ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
-          <div class="flex">
+          <div class="figures flex">
             <figure class="card">
               <figcaption> 
                 <picture><img src="img/service_1.png" alt="Clean Typography"/></picture>
@@ -82,14 +84,14 @@
             <hr>
           </div>
           <p class="title_desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
-          <div class="aboutus_desc flex">
+          <div class="aboutus_desc flex justify_center">
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
           </div>
-          <div class="flex">
+          <div class="devs flex justify_center">
             <figure class="cardDev">
               <figcaption> 
-                <div class="pic flex justify_center">
+                <div class="pic flex justify_center relative">
                   <picture>
                     <source srcset="img/dev_1.webp" type="image/webp"/><img src="img/dev_1.jpg" alt="dev Md. Khalil Uddin"/>
                   </picture>
@@ -101,7 +103,7 @@
             </figure>
             <figure class="cardDev">
               <figcaption> 
-                <div class="pic flex justify_center">
+                <div class="pic flex justify_center relative">
                   <picture>
                     <source srcset="img/dev_2.webp" type="image/webp"/><img src="img/dev_2.jpg" alt="dev Rubel Miah"/>
                   </picture>
@@ -113,7 +115,7 @@
             </figure>
             <figure class="cardDev">
               <figcaption> 
-                <div class="pic flex justify_center">
+                <div class="pic flex justify_center relative">
                   <picture>
                     <source srcset="img/dev_3.webp" type="image/webp"/><img src="img/dev_3.jpg" alt="dev Shamim Mia"/>
                   </picture>
@@ -125,7 +127,7 @@
             </figure>
             <figure class="cardDev">
               <figcaption> 
-                <div class="pic flex justify_center">
+                <div class="pic flex justify_center relative">
                   <picture>
                     <source srcset="img/dev_4.webp" type="image/webp"/><img src="img/dev_4.jpg" alt="dev John Doe"/>
                   </picture>
@@ -145,73 +147,100 @@
             <hr>
           </div>
           <p class="title_desc flex justify_center"><a href="#">All</a><a href="#">Branding</a><a href="#">Design</a><a href="#">Development</a><a href="#">Strategy</a></p>
-          <div class="cards grid justify_center items_stretch">
-            <div class="cardWork" style="background-image: url(img/project_1.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+          <div class="cards grid">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_1.webp" type="image/webp"/><img src="img/project_1.jpg" alt="project_1"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Hair Dresser</h3>
                   <p>Branding</p><a class="relative" href="project_link_1">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_2.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_2.webp" type="image/webp"/><img src="img/project_2.jpg" alt="project_2"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Diplomacy</h3>
                   <p>Strategy</p><a class="relative" href="project_link_2">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_3.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_3.webp" type="image/webp"/><img src="img/project_3.jpg" alt="project_3"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Gadgets</h3>
                   <p>Development</p><a class="relative" href="project_link_3">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_4.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_4.webp" type="image/webp"/><img src="img/project_4.jpg" alt="project_4"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Camera</h3>
                   <p>Development</p><a class="relative" href="project_link_4">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_5.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_5.webp" type="image/webp"/><img src="img/project_5.jpg" alt="project_5"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Bike</h3>
                   <p>Design</p><a class="relative" href="project_link_5">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_6.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_6.webp" type="image/webp"/><img src="img/project_6.jpg" alt="project_6"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Notebook</h3>
                   <p>Branding</p><a class="relative" href="project_link_6">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_7.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_7.webp" type="image/webp"/><img src="img/project_7.jpg" alt="project_7"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Workplace</h3>
                   <p>Branding</p><a class="relative" href="project_link_7">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_8.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_8.webp" type="image/webp"/><img src="img/project_8.jpg" alt="project_8"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Office</h3>
                   <p>Design</p><a class="relative" href="project_link_8">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork" style="background-image: url(img/project_9.jpg)">
-              <div class="cardInfoBlock flex justify_center">
+            <div class="cardWork relative">
+              <picture>
+                <source srcset="img/project_9.webp" type="image/webp"/><img src="img/project_9.jpg" alt="project_9"/>
+              </picture>
+              <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Events</h3>
                   <p>Strategy</p><a class="relative" href="project_link_9">View</a>
@@ -279,7 +308,7 @@
       </section>
       <section class="clients" id="clients">
         <div class="wrapper">
-          <div class="brands flex justify_center gap_6"><img src="img/brand_1.png" alt="brand deorham"><img src="img/brand_2.png" alt="brand ratings"><img src="img/brand_3.png" alt="brand malik media"><img src="img/brand_4.png" alt="brand bcause"><img src="img/brand_5.png" alt="brand womgify"></div>
+          <div class="brands flex justify_center"><img src="img/brand_1.png" alt="brand deorham"><img src="img/brand_2.png" alt="brand ratings"><img src="img/brand_3.png" alt="brand malik media"><img src="img/brand_4.png" alt="brand bcause"><img src="img/brand_5.png" alt="brand womgify"></div>
           <div class="reviews">
             <div class="review">
               <p class="comment">Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”</p>
@@ -296,7 +325,7 @@
             <hr>
           </div>
           <p class="title_desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
-          <div class="contact_block grid grid_1_2 items_stretch"> 
+          <div class="contact_block flex items_stretch"> 
             <div class="contact text-left">
               <div class="address">
                 <h3>Address</h3>
@@ -314,15 +343,25 @@
             </div>
             <form class="contact_form" action="" method="post"> 
               <div class="form_row flex">
-                <input type="text" name="name" placeholder="Your Name">
-                <input type="email" name="email" placeholder="Your E-mail">
+                <label>
+                  <input type="text" name="name" placeholder="Your Name">
+                </label>
+                <label>
+                  <input type="email" name="email" placeholder="Your E-mail">
+                </label>
               </div>
               <div class="form_row flex">
-                <input type="text" name="subject" placeholder="Your subject">
-                <input type="text" name="company" placeholder="Company name">
+                <label>
+                  <input type="text" name="subject" placeholder="Your subject">
+                </label>
+                <label>
+                  <input type="text" name="company" placeholder="Company name">
+                </label>
               </div>
               <div class="ta">
-                <textarea name="message" placeholder="Write your message"> </textarea>
+                <label>
+                  <textarea name="message" placeholder="Write your message"> </textarea>
+                </label>
               </div>
               <div class="tr flex justify_start">
                 <button class="btn" type="submit">Send message</button>
