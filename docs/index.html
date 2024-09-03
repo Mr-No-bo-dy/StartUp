@@ -38,7 +38,22 @@
       </div>
     </header>
     <main class="main"> 
-      <section class="home flex" id="home"> 
+      <section class="home flex bg_parallax" id="home"> 
+        <div class="hidden" id="sign_popup">
+          <form class="contact_form relative" action="" method="post"><span id="closeBtn">X</span>
+            <h2>Sign in</h2>
+            <label>
+              <input type="text" name="name" required placeholder="Your Name">
+            </label>
+            <label class="relative">
+              <input class="email" type="email" name="email" required placeholder="Your E-mail"><span class="errorEmail error"></span>
+            </label>
+            <label class="relative">
+              <input id="tel" type="tel" name="tel" required placeholder="Your Phone"><span class="error" id="errorTel"></span>
+            </label>
+            <button class="btn" id="signBtn" type="submit" disabled>Accept</button>
+          </form>
+        </div>
         <div class="wrapper"> 
           <h2>Welcome to STARTUP</h2>
           <p class="title_desc">Your Favourite Creative Agency Template</p>
@@ -250,7 +265,7 @@
           </div>
         </div>
       </section>
-      <div class="getInTouch" id="getInTouch">
+      <div class="getInTouch bg_parallax" id="getInTouch">
         <div class="wrapper"> 
           <p>Do you like OUR WORK so far? Let's talk about YOUR PROJECT!</p>
           <button class="btn" id="getInTouchBtn" type="button">Get in Touch</button>
@@ -344,10 +359,10 @@
             <form class="contact_form" action="" method="post"> 
               <div class="form_row flex">
                 <label>
-                  <input type="text" name="name" placeholder="Your Name">
+                  <input type="text" name="name" required placeholder="Your Name">
                 </label>
-                <label>
-                  <input type="email" name="email" placeholder="Your E-mail">
+                <label class="relative">
+                  <input class="email" type="email" name="email" required placeholder="Your E-mail"><span class="errorEmail error"></span>
                 </label>
               </div>
               <div class="form_row flex">

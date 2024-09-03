@@ -25,7 +25,20 @@ html(lang="en")
                      +headerMenu(navMenu)
 
       main.main 
-         section#home.home.flex 
+         section#home.home.flex.bg_parallax 
+            #sign_popup.hidden
+               form(action="", method="post").contact_form.relative
+                  span#closeBtn X
+                  h2 Sign in
+                  label
+                     input(type="text" name="name" required placeholder="Your Name")
+                  label.relative
+                     input(type="email" name="email" required placeholder="Your E-mail").email
+                     span.errorEmail.error
+                  label.relative
+                     input(id="tel" type="tel" name="tel" required placeholder="Your Phone")
+                     span(id="errorTel").error
+                  button(id="signBtn" type="submit" disabled).btn Accept
             .wrapper 
                h2 Welcome to STARTUP
                p.title_desc Your Favourite Creative Agency Template
@@ -72,7 +85,7 @@ html(lang="en")
                .cards.grid
                   +cardsWorks(cardWorks)
 
-         #getInTouch.getInTouch
+         #getInTouch.getInTouch.bg_parallax
             .wrapper 
                p Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
                button.btn(id="getInTouchBtn" type="button") Get in Touch
@@ -140,9 +153,10 @@ html(lang="en")
                   form(action="" method="post").contact_form 
                      .form_row.flex
                         label
-                           input(type="text" name="name" placeholder="Your Name")
-                        label
-                           input(type="email" name="email" placeholder="Your E-mail")
+                           input(type="text" name="name" required placeholder="Your Name")
+                        label.relative
+                           input(type="email" name="email" required placeholder="Your E-mail").email
+                           span.errorEmail.error
                      .form_row.flex
                         label
                            input(type="text" name="subject" placeholder="Your subject")
