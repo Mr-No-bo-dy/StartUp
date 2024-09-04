@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Nav-Menu & Hamburger
     const hamburger = document.querySelector('.hamburger'),
         nav = document.querySelector('.nav'),
         nav_links = document.querySelectorAll('.nav a');
     hamburger.onclick = navToggle;
-    nav_links.forEach(link => {
+    nav_links.forEach(function (link) {
         link.onclick = navToggle;
     })
     function navToggle() {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show/Hide Nav menu
     const header = document.querySelector('#header .header_line');
     let lastScroll = 0;
-    document.addEventListener('scroll', function() {
+    document.addEventListener('scroll', function () {
         let scroll = window.scrollY;
         if (scroll > lastScroll) {
             header.style.top = '-100%';
@@ -47,17 +47,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Smooth scroll to certain block on same page
-    document.querySelectorAll('.header_menu a').forEach(link => {
-        link.addEventListener('click', function(ev) {
+    document.querySelectorAll('.header_menu a').forEach(function (link) {
+        link.addEventListener('click', function (ev) {
             ev.preventDefault();
             const toBlock = document.querySelector(link.getAttribute('href'));
             toBlock.scrollIntoView({behavior: 'smooth'});
         });
     });
+    // document.querySelectorAll('.header_menu a').forEach(function (link) {
+    //     link.addEventListener('click', function (ev) {
+    //         ev.preventDefault();
+    //         const targetElement = document.querySelector(this.getAttribute('href'));
+    //         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+    //         window.scrollTo({
+    //             top: targetPosition,
+    //             behavior: 'smooth'
+    //         });
+    //     });
+    // });
 
     // Parallax on backgrounds
     const blocks = document.querySelectorAll('.bg_parallax');
-    blocks.forEach(block => {
+    blocks.forEach(function (block) {
         function parallax(ev) {
             let moveX = (((ev.pageX - window.scrollX) / window.innerWidth) - 0.5) * 70,
                 moveY = (((ev.pageY - window.scrollY) / window.innerHeight) - 0.5) * 20;
@@ -76,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let errorTel = document.querySelector('#errorTel');
     let signErrors = [];
     signErrors['tel'] = true;
-    tel.oninput = function() {
+    tel.oninput = function () {
         let string = tel.value.replace(/[^+0-9\(\)\-\s]/g, '');
         tel.value = string;
         if (string.length >= 10) {
@@ -111,9 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const emails = document.querySelectorAll('.email'),
         emailRegEx = /^([a-z][a-z0-9._-]+[a-z])(@[a-z][a-z0-9_-]+)(\.[a-z]+)(\.[a-z]+)?$/gi;
     signErrors['email'] = true;
-    emails.forEach(email => {
+    emails.forEach(function (email) {
         const errorEmail = email.nextElementSibling;
-        email.oninput = function() {
+        email.oninput = function () {
             let string = email.value;
             if (string.length >= 10) {
                 if (emailRegEx.test(string)) {
@@ -154,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
             signErrors['tel'] = false;
             signErrors['email'] = false;
         }
-        popup.addEventListener('click', function(ev) {
+        popup.addEventListener('click', function (ev) {
             if (ev.target === popup) closePopup();
         });
         document.addEventListener("keydown", function (ev) {
@@ -164,6 +175,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     document.querySelector('#getStarted').addEventListener('click', showPopup);
 
-
+    // triple click focus
+    const hackedElems = document.querySelectorAll('.hacked');
+    let clickCount = 0, clickTimerID = null;
+    document.querySelector('.triple_click').addEventListener('click', function () {
+        clickCount++;
+        clearTimeout(clickTimerID);
+        if (clickCount === 3) {
+            let originalTexts = [];
+            hackedElems.forEach(function (elem, index) {
+                originalTexts[index] = elem.innerHTML;
+                elem.innerHTML = 'Triple click!';
+                elem.classList.add('red');
+            });
+            setTimeout(function () {
+                hackedElems.forEach(function (elem, index) {
+                    elem.innerHTML = originalTexts[index];
+                    elem.classList.remove('red');
+                });
+            }, 3000);
+            clickCount = 0;
+        }
+        clickTimerID = setTimeout(function () {
+            clickCount = 0;
+        }, 500);
+    });
 
 });

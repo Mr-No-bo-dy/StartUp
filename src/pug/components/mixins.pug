@@ -11,8 +11,8 @@ mixin figureServices(item)
    figure(class="card")
       figcaption 
          picture
-            img(src=item.src + ".png" alt=item.alt) 
-         h3= item.title
+            img(src=item.src + ".png" alt=item.alt class=item.click) 
+         h3(class=item.hack)= item.title 
          p= item.description
 
 mixin figureAboutUs(item) 
