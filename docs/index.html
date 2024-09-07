@@ -41,17 +41,17 @@
       <section class="home flex bg_parallax" id="home"> 
         <div class="hidden" id="sign_popup">
           <form class="contact_form relative" action="" method="post"><span id="closeBtn">X</span>
-            <h2>Sign in</h2>
+            <h2>Sign up</h2>
             <label>
-              <input type="text" name="name" required placeholder="Your Name">
+              <input type="text" name="name" required placeholder="Your Name*">
             </label>
             <label class="relative">
-              <input class="email" type="email" name="email" required placeholder="Your E-mail"><span class="errorEmail error"></span>
+              <input class="email" type="email" name="email" required placeholder="Your E-mail*"><span class="errorEmail error"></span>
             </label>
             <label class="relative">
-              <input id="tel" type="tel" name="tel" required placeholder="Your Phone"><span class="error" id="errorTel"></span>
-            </label>
-            <button class="btn" id="signBtn" type="submit" disabled>Accept</button>
+              <input id="tel" type="tel" name="tel" placeholder="Your Phone"><span class="error" id="errorTel"></span>
+            </label><span class="block nota">* This fields are required</span>
+            <button class="disabledBtn btn" id="signBtn" type="button" disabled>Accept</button>
           </form>
         </div>
         <div class="wrapper"> 
@@ -103,55 +103,89 @@
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
           </div>
-          <div class="devs flex justify_center">
-            <figure class="cardDev">
-              <figcaption> 
-                <div class="pic flex justify_center relative">
-                  <picture>
-                    <source srcset="img/dev_1.webp" type="image/webp"/><img src="img/dev_1.jpg" alt="dev Md. Khalil Uddin"/>
-                  </picture>
-                  <div class="socials"> <a href="facebook_link_1"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_1"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_1"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_1"> <img src="img/social_linkedin.png" alt="linkedin page"/></a></div>
-                </div>
-                <h3>Md. Khalil Uddin</h3>
-                <p>Head of Ideas</p>
-              </figcaption>
-            </figure>
-            <figure class="cardDev">
-              <figcaption> 
-                <div class="pic flex justify_center relative">
-                  <picture>
-                    <source srcset="img/dev_2.webp" type="image/webp"/><img src="img/dev_2.jpg" alt="dev Rubel Miah"/>
-                  </picture>
-                  <div class="socials"> <a href="facebook_link_2"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_2"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_2"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_2"> <img src="img/social_linkedin.png" alt="linkedin page"/></a></div>
-                </div>
-                <h3>Rubel Miah</h3>
-                <p>Lead WordPress Developer</p>
-              </figcaption>
-            </figure>
-            <figure class="cardDev">
-              <figcaption> 
-                <div class="pic flex justify_center relative">
-                  <picture>
-                    <source srcset="img/dev_3.webp" type="image/webp"/><img src="img/dev_3.jpg" alt="dev Shamim Mia"/>
-                  </picture>
-                  <div class="socials"> <a href="facebook_link_3"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_3"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_3"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_3"> <img src="img/social_linkedin.png" alt="linkedin page"/></a></div>
-                </div>
-                <h3>Shamim Mia</h3>
-                <p>Sr. Web Developer</p>
-              </figcaption>
-            </figure>
-            <figure class="cardDev">
-              <figcaption> 
-                <div class="pic flex justify_center relative">
-                  <picture>
-                    <source srcset="img/dev_4.webp" type="image/webp"/><img src="img/dev_4.jpg" alt="dev John Doe"/>
-                  </picture>
-                  <div class="socials"> <a href="facebook_link_4"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_4"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_4"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_4"> <img src="img/social_linkedin.png" alt="linkedin page"/></a></div>
-                </div>
-                <h3>John Doe</h3>
-                <p>Front-end Developer</p>
-              </figcaption>
-            </figure>
+          <div class="devs carousel-wrapper relative">
+            <button class="carouselBtn btnLeft" id="carouselLeft" type="button">&lt;</button>
+            <button class="carouselBtn btnRight" id="carouselRight" type="button">&gt;</button>
+            <div class="carousel flex">
+              <figure class="cardDev 1">
+                <figcaption> 
+                  <div class="pic flex justify_center relative">
+                    <picture>
+                      <source srcset="img/dev_1.webp" type="image/webp"/><img src="img/dev_1.jpg" alt="dev Md. Khalil Uddin"/>
+                    </picture>
+                    <div class="socials"> <a href="facebook_link_1"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_1"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_1"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_1"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
+                    </div>
+                  </div>
+                  <h3>Md. Khalil Uddin</h3>
+                  <p>Head of Ideas</p>
+                </figcaption>
+              </figure>
+              <figure class="cardDev 2">
+                <figcaption> 
+                  <div class="pic flex justify_center relative">
+                    <picture>
+                      <source srcset="img/dev_2.webp" type="image/webp"/><img src="img/dev_2.jpg" alt="dev Rubel Miah"/>
+                    </picture>
+                    <div class="socials"> <a href="facebook_link_2"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_2"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="linkedin_link_2"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
+                    </div>
+                  </div>
+                  <h3>Rubel Miah</h3>
+                  <p>Lead WordPress Developer</p>
+                </figcaption>
+              </figure>
+              <figure class="cardDev 3">
+                <figcaption> 
+                  <div class="pic flex justify_center relative">
+                    <picture>
+                      <source srcset="img/dev_3.webp" type="image/webp"/><img src="img/dev_3.jpg" alt="dev Shamim Mia"/>
+                    </picture>
+                    <div class="socials"> <a href="facebook_link_3"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="google_link_3"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_3"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
+                    </div>
+                  </div>
+                  <h3>Shamim Mia</h3>
+                  <p>Sr. Web Developer</p>
+                </figcaption>
+              </figure>
+              <figure class="cardDev 4">
+                <figcaption> 
+                  <div class="pic flex justify_center relative">
+                    <picture>
+                      <source srcset="img/dev_4.webp" type="image/webp"/><img src="img/dev_4.jpg" alt="dev John Doe"/>
+                    </picture>
+                    <div class="socials"> <a href="twitter_link_4"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_4"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_4"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
+                    </div>
+                  </div>
+                  <h3>John Doe</h3>
+                  <p>Front-end Developer</p>
+                </figcaption>
+              </figure>
+              <figure class="cardDev 5">
+                <figcaption> 
+                  <div class="pic flex justify_center relative">
+                    <picture>
+                      <source srcset="img/dev_5.webp" type="image/webp"/><img src="img/dev_5.jpg" alt="dev Jane Doe"/>
+                    </picture>
+                    <div class="socials"> <a href="twitter_link_5"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="linkedin_link_5"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
+                    </div>
+                  </div>
+                  <h3>Jane Doe</h3>
+                  <p>Back-end Developer</p>
+                </figcaption>
+              </figure>
+              <figure class="cardDev 6">
+                <figcaption> 
+                  <div class="pic flex justify_center relative">
+                    <picture>
+                      <source srcset="img/dev_6.webp" type="image/webp"/><img src="img/dev_6.jpg" alt="dev Janny Doe"/>
+                    </picture>
+                    <div class="socials"> <a href="facebook_link_6"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_6"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_6"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_6"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
+                    </div>
+                  </div>
+                  <h3>Jenny Doe</h3>
+                  <p>Fullstack Developer</p>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
@@ -341,7 +375,7 @@
           </div>
           <p class="title_desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
           <div class="contact_block flex items_stretch"> 
-            <div class="contact text-left">
+            <div class="contact text_left">
               <div class="address">
                 <h3>Address</h3>
                 <p>
@@ -356,7 +390,7 @@
                 <p> <a href="mailto:shapedtheme@gmail.com "> shapedtheme@gmail.com </a><br><a href="mailto:khalilkode@gmail.com"> khalilkode@gmail.com</a></p>
               </div>
             </div>
-            <form class="contact_form" action="" method="post"> 
+            <form class="contact_form" action="" method="post" id="contactForm"> 
               <div class="form_row flex">
                 <label>
                   <input type="text" name="name" required placeholder="Your Name">
@@ -379,8 +413,17 @@
                 </label>
               </div>
               <div class="tr flex justify_start">
-                <button class="btn" type="submit">Send message</button>
+                <button class="disabledBtn btn" type="button" id="showConfirmBtn" disabled>Send message</button>
                 <p class="nota"> <span>*</span>&nbsp;We’ll contact you as as possible. We don’t reply on Monday.</p>
+              </div>
+              <div class="sendMsgPopup hidden" id="sendMsgPopup">
+                <div class="contact_form relative" id="sendMsgWrap">
+                  <h2>Send this message?</h2>
+                  <div class="flex justify_center">
+                    <button class="btn" id="cancelBtn" type="button">Cancel</button>
+                    <button class="btn" id="confirmBtn" type="submit">Confirm</button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

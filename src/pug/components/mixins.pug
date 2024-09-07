@@ -16,21 +16,17 @@ mixin figureServices(item)
          p= item.description
 
 mixin figureAboutUs(item) 
-   figure(class="cardDev")
+   figure(class="cardDev " + item.number)
       figcaption 
          .pic.flex.justify_center.relative
             picture
                source(srcset=item.src + ".webp" type="image/webp") 
                img(src=item.src + ".jpg" alt=item.alt) 
             .socials 
-               a(href=item.facebook) 
-                  img(src="img/social_facebook.png", alt="facebook page")
-               a(href=item.twitter) 
-                  img(src="img/social_twitter.png", alt="twitter page")
-               a(href=item.google) 
-                  img(src="img/social_google.png", alt="google page")
-               a(href=item.linkedin) 
-                  img(src="img/social_linkedin.png", alt="linkedin page")
+               each social in ['facebook', 'twitter', 'google', 'linkedin']
+                  if item[social]
+                     a(href=item[social]) 
+                        img(src="img/social_" + social + ".png", alt=social + " page")
          h3= item.name
          p= item.position
 

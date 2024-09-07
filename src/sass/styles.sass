@@ -43,7 +43,7 @@ img
 .wrapper
    margin: auto
    padding: 0 15px
-   max-width: 1200px
+   max-width: 1170px
    width: calc(90% + 30rem)
 
 .over_hidden
@@ -62,6 +62,9 @@ img
 
 .hidden 
    display: none
+
+.block 
+   display: block
 
 .flex
    display: flex
@@ -105,7 +108,7 @@ img
       color: $colorHover
       background-color: $bgColorMain
 
-.text-left
+.text_left
    text-align: left
 
 .header
@@ -114,7 +117,6 @@ img
       z-index: 10
       padding: 30rem 0
       width: 100%
-      background-color: $colorHover
       transition: top .3s
    h1 a 
       color: $colorSecondary
@@ -123,12 +125,14 @@ img
       line-height: 1.5em
    h1:hover a
       transform: scale(1.15)
+.header_bgc
+   background-color: $colorHover
 
 .error
    position: absolute
-   top: calc(100% + 3px)
+   top: calc(100% - 1px)
    left: 0
-   font-size: 10px
+   font-size: 12rem
    color: $colorHover
 
 .red
@@ -202,7 +206,7 @@ img
    &:hover
       transform: scale(1.15)
 
-#sign_popup
+#sign_popup, #sendMsgPopup
    position: fixed
    top: 0
    left: 0
@@ -228,7 +232,7 @@ img
          color: $colorMain
       label
          display: block
-         margin: 30rem auto
+         margin: 25rem auto
          width: 70%
       #closeBtn
          position: absolute
@@ -246,9 +250,12 @@ img
       &:disabled,
       &:disabled:hover
          color: black
-         background-color: $colorThird
+         background-color: rgba($colorThird, 0.7)
          border-color: black
          cursor: default
+   .sendMsgPopup
+      .flex
+         column-gap: 60rem
 
 .home
    padding-top: 96rem
@@ -325,6 +332,32 @@ p.title_desc
          justify-content: space-around
       +media(1256)
          justify-content: space-between
+   .carousel-wrapper
+      overflow: hidden
+   .carouselBtn
+      position: absolute
+      top: 34%
+      z-index: 2
+      width: 35rem
+      height: 38rem
+      color: $colorSecondary
+      font-weight: bold
+      background-color: rgba($colorMain, 0.35)
+      border: none
+      &:hover 
+         background-color: $bgColorSecondary
+         cursor: pointer
+   .carouselBtn.btnLeft
+      left: 0
+   .carouselBtn.btnRight
+      right: 0
+   .carousel 
+      flex-wrap: nowrap
+      justify-content: space-between
+      column-gap: 29.33px
+      transition: transform 0.5s ease-in-out
+      .cardDev
+         transition: transform 0.5s ease-in-out
    .pic
       img
          transition: .3s
@@ -453,7 +486,7 @@ p.title_desc
       width: 100%
       height: 100%
 .post_itself
-   width: 100%
+   width: 80%
    +media(1024)
       width: calc((100% - 40rem) * 0.6)
    .flex
@@ -484,6 +517,8 @@ p.title_desc
       line-height: 1.85em
       font-style: italic
    .text
+      overflow-y: auto
+      max-height: 50vh
       margin: 20rem 0 30rem
       color: $colorMain
       font-size: 14rem
@@ -605,6 +640,7 @@ p.title_desc
       width: 100%
       padding: 15rem
       color: $colorMain
+      font-size: 16rem
       background-color: $bgColorMain
       outline: none
       border: 1px solid $colorMain
@@ -614,6 +650,7 @@ p.title_desc
          border-color: $colorHover
       &::placeholder
          color: $colorMain
+         font-size: 12rem
          text-transform: uppercase
    textarea
       resize: vertical
@@ -622,6 +659,7 @@ p.title_desc
       text-transform: none
    .btn
       color: $colorMain
+      font-size: 12rem
       border: 1px solid $colorMain
       &:hover
          color: $colorHover
@@ -629,7 +667,7 @@ p.title_desc
    .nota
       color: $colorMain
       font-size: 12rem
-      line-height: 1.67rem
+      line-height: 1.67em
       font-family: $fontSecondary
       span
          color: $colorHover
