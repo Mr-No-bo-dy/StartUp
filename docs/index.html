@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Roboto+Slab:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;family=Roboto+Slab:wght@400;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="shortcut icon" href="img/js-ico.svg" type="image/x-icon">
     <title>StartUp - Your Favourite Creative Agency</title>
@@ -55,19 +55,19 @@
           </form>
         </div>
         <div class="wrapper"> 
-          <h2>Welcome to STARTUP</h2>
+          <h2 class="welcome">Welcome to STARTUP</h2>
           <p class="title_desc">Your Favourite Creative Agency Template</p>
           <button class="btn" id="getStarted" type="button">Get Started</button>
         </div>
       </section>
-      <section class="services" id="services"> 
+      <section class="services hiddenBlock" id="services"> 
         <div class="wrapper">
           <h2>Services</h2>
           <div class="flex justify_center">
             <hr>
           </div>
           <p class="title_desc">We offer ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
-          <div class="figures flex">
+          <div class="figures flex hiddenChild">
             <figure class="card">
               <figcaption> 
                 <picture><img src="img/service_1.png" alt="Clean Typography"/></picture>
@@ -92,7 +92,7 @@
           </div>
         </div>
       </section>
-      <section class="aboutus" id="aboutus">
+      <section class="aboutus hiddenBlock" id="aboutus">
         <div class="wrapper">
           <h2>About us</h2>
           <div class="flex justify_center">
@@ -103,9 +103,7 @@
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.</p>
           </div>
-          <div class="devs carousel-wrapper relative">
-            <button class="carouselBtn btnLeft" id="carouselLeft" type="button">&lt;</button>
-            <button class="carouselBtn btnRight" id="carouselRight" type="button">&gt;</button>
+          <div class="devs carousel-wrapper relative hiddenChild">
             <div class="carousel flex">
               <figure class="cardDev 1">
                 <figcaption> 
@@ -159,89 +157,63 @@
                   <p>Front-end Developer</p>
                 </figcaption>
               </figure>
-              <figure class="cardDev 5">
-                <figcaption> 
-                  <div class="pic flex justify_center relative">
-                    <picture>
-                      <source srcset="img/dev_5.webp" type="image/webp"/><img src="img/dev_5.jpg" alt="dev Jane Doe"/>
-                    </picture>
-                    <div class="socials"> <a href="twitter_link_5"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="linkedin_link_5"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
-                    </div>
-                  </div>
-                  <h3>Jane Doe</h3>
-                  <p>Back-end Developer</p>
-                </figcaption>
-              </figure>
-              <figure class="cardDev 6">
-                <figcaption> 
-                  <div class="pic flex justify_center relative">
-                    <picture>
-                      <source srcset="img/dev_6.webp" type="image/webp"/><img src="img/dev_6.jpg" alt="dev Janny Doe"/>
-                    </picture>
-                    <div class="socials"> <a href="facebook_link_6"> <img src="img/social_facebook.png" alt="facebook page"/></a><a href="twitter_link_6"> <img src="img/social_twitter.png" alt="twitter page"/></a><a href="google_link_6"> <img src="img/social_google.png" alt="google page"/></a><a href="linkedin_link_6"> <img src="img/social_linkedin.png" alt="linkedin page"/></a>
-                    </div>
-                  </div>
-                  <h3>Jenny Doe</h3>
-                  <p>Fullstack Developer</p>
-                </figcaption>
-              </figure>
             </div>
           </div>
         </div>
       </section>
-      <section class="works" id="works">
+      <section class="works hiddenBlock" id="works">
         <div class="wrapper">
           <h2>Latest Works</h2>
           <div class="flex justify_center">
             <hr>
           </div>
-          <p class="title_desc flex justify_center"><a href="#">All</a><a href="#">Branding</a><a href="#">Design</a><a href="#">Development</a><a href="#">Strategy</a></p>
-          <div class="cards grid">
-            <div class="cardWork relative">
+          <p class="categories title_desc flex justify_center"><a class="activeCategory" id="catAll" href="#" data-category="">All</a><a id="catBranding" href="#" data-category="Branding">Branding</a><a id="catDesign" href="#" data-category="Design">Design</a><a id="catDevelopment" href="#" data-category="Development">Development</a><a id="catStrategy" href="#" data-category="Strategy">Strategy</a></p>
+          <div class="workCards grid hiddenChild">
+            <div class="cardWork relative" data-category="Design">
               <picture>
                 <source srcset="img/project_1.webp" type="image/webp"/><img src="img/project_1.jpg" alt="project_1"/>
               </picture>
               <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Hair Dresser</h3>
-                  <p>Branding</p><a class="relative" href="project_link_1">View</a>
+                  <p>Design</p><a class="relative" href="project_link_1">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Branding,Strategy">
               <picture>
                 <source srcset="img/project_2.webp" type="image/webp"/><img src="img/project_2.jpg" alt="project_2"/>
               </picture>
               <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Diplomacy</h3>
-                  <p>Strategy</p><a class="relative" href="project_link_2">View</a>
+                  <p>Branding, Strategy</p><a class="relative" href="project_link_2">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Branding,Design,Development">
               <picture>
                 <source srcset="img/project_3.webp" type="image/webp"/><img src="img/project_3.jpg" alt="project_3"/>
               </picture>
               <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Gadgets</h3>
-                  <p>Development</p><a class="relative" href="project_link_3">View</a>
+                  <p>Branding, Design, Development</p><a class="relative" href="project_link_3">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Design,Development">
               <picture>
                 <source srcset="img/project_4.webp" type="image/webp"/><img src="img/project_4.jpg" alt="project_4"/>
               </picture>
               <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Camera</h3>
-                  <p>Development</p><a class="relative" href="project_link_4">View</a>
+                  <p>Design, Development</p><a class="relative" href="project_link_4">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Design">
               <picture>
                 <source srcset="img/project_5.webp" type="image/webp"/><img src="img/project_5.jpg" alt="project_5"/>
               </picture>
@@ -252,7 +224,7 @@
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Branding">
               <picture>
                 <source srcset="img/project_6.webp" type="image/webp"/><img src="img/project_6.jpg" alt="project_6"/>
               </picture>
@@ -263,18 +235,18 @@
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Branding,Development">
               <picture>
                 <source srcset="img/project_7.webp" type="image/webp"/><img src="img/project_7.jpg" alt="project_7"/>
               </picture>
               <div class="cardInfoBlock absolute flex justify_center">
                 <div class="cardInfo">
                   <h3>Workplace</h3>
-                  <p>Branding</p><a class="relative" href="project_link_7">View</a>
+                  <p>Branding, Development</p><a class="relative" href="project_link_7">View</a>
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Design">
               <picture>
                 <source srcset="img/project_8.webp" type="image/webp"/><img src="img/project_8.jpg" alt="project_8"/>
               </picture>
@@ -285,7 +257,7 @@
                 </div>
               </div>
             </div>
-            <div class="cardWork relative">
+            <div class="cardWork relative" data-category="Strategy">
               <picture>
                 <source srcset="img/project_9.webp" type="image/webp"/><img src="img/project_9.jpg" alt="project_9"/>
               </picture>
@@ -305,14 +277,14 @@
           <button class="btn" id="getInTouchBtn" type="button">Get in Touch</button>
         </div>
       </div>
-      <section class="blog" id="blog">
+      <section class="blog hiddenBlock" id="blog">
         <div class="wrapper">
           <h2>Recent blog posts</h2>
           <div class="flex justify_center">
             <hr>
           </div>
           <p class="title_desc flex justify_center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet</p>
-          <div class="posts"> 
+          <div class="posts hiddenChild"> 
             <div class="post flex items_stretch">
               <picture>
                 <source srcset="img/post_1.webp" type="image/webp"/><img src="img/post_1.jpg" alt="post_1"/>
@@ -367,7 +339,7 @@
           <div class="markers"> <span></span></div>
         </div>
       </section>
-      <section class="contacts" id="contacts">
+      <section class="contacts hiddenBlock" id="contacts">
         <div class="wrapper">
           <h2>Get in touch</h2>
           <div class="flex justify_center">
@@ -390,7 +362,7 @@
                 <p> <a href="mailto:shapedtheme@gmail.com "> shapedtheme@gmail.com </a><br><a href="mailto:khalilkode@gmail.com"> khalilkode@gmail.com</a></p>
               </div>
             </div>
-            <form class="contact_form" action="" method="post" id="contactForm"> 
+            <form class="contact_form hiddenChild" action="" method="post" id="contactForm"> 
               <div class="form_row flex">
                 <label>
                   <input type="text" name="name" required placeholder="Your Name">
@@ -409,7 +381,7 @@
               </div>
               <div class="ta">
                 <label>
-                  <textarea name="message" placeholder="Write your message"> </textarea>
+                  <textarea name="message" placeholder="Write your message"></textarea>
                 </label>
               </div>
               <div class="tr flex justify_start">

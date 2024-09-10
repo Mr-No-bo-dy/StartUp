@@ -31,15 +31,15 @@ mixin figureAboutUs(item)
          p= item.position
 
 mixin cardsWorks(items)
-   for item in items 
-      .cardWork.relative
+   for item in items
+      .cardWork.relative(data-category=item.category.join(','))
          picture
             source(srcset=item.src + ".webp" type="image/webp") 
             img(src=item.src + ".jpg" alt=item.alt) 
          .cardInfoBlock.absolute.flex.justify_center
             .cardInfo
                h3= item.title
-               p= item.category
+               p= item.category.join(', ')
                a(href=item.href).relative View
 
 mixin post(item)

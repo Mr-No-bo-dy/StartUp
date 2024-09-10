@@ -9,7 +9,7 @@ html(lang="en")
       meta(name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0")
       link(rel="preconnect" href="https://fonts.googleapis.com")
       link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-      link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet")
+      link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet")
       link(rel="stylesheet" href="css/styles.css")
       link(rel="shortcut icon", href="img/js-ico.svg", type="image/x-icon")
       title StartUp - Your Favourite Creative Agency
@@ -41,22 +41,22 @@ html(lang="en")
                   span.block.nota * This fields are required
                   button(id="signBtn" type="button" disabled).disabledBtn.btn Accept
             .wrapper 
-               h2 Welcome to STARTUP
+               h2.welcome Welcome to STARTUP
                p.title_desc Your Favourite Creative Agency Template
                button.btn(id="getStarted" type="button") Get Started
 
-         section#services.services 
+         section#services.services.hiddenBlock 
             .wrapper
                h2 Services
                .flex.justify_center
                   hr
                p.title_desc We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
-               .figures.flex
+               .figures.flex.hiddenChild
                   +figureServices(cardServices.typography) 
                   +figureServices(cardServices.code) 
                   +figureServices(cardServices.support) 
 
-         section#aboutus.aboutus
+         section#aboutus.aboutus.hiddenBlock
             .wrapper
                h2 About us
                .flex.justify_center
@@ -65,29 +65,29 @@ html(lang="en")
                .aboutus_desc.flex.justify_center
                   p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
                   p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
-               .devs.carousel-wrapper.relative
-                  button(id="carouselLeft" type="button").carouselBtn.btnLeft &lt;
-                  button(id="carouselRight" type="button").carouselBtn.btnRight &gt;
+               .devs.carousel-wrapper.relative.hiddenChild
+                  //- button(id="carouselLeft" type="button").carouselBtn.btnLeft &lt;
+                  //- button(id="carouselRight" type="button").carouselBtn.btnRight &gt;
                   .carousel.flex
                      +figureAboutUs(cardAboutUs.first)
                      +figureAboutUs(cardAboutUs.second)
                      +figureAboutUs(cardAboutUs.third)
                      +figureAboutUs(cardAboutUs.fourth)
-                     +figureAboutUs(cardAboutUs.fifth)
-                     +figureAboutUs(cardAboutUs.sixth)
+                     //- +figureAboutUs(cardAboutUs.fifth)
+                     //- +figureAboutUs(cardAboutUs.sixth)
 
-         section#works.works
+         section#works.works.hiddenBlock
             .wrapper
                h2 Latest Works
                .flex.justify_center
                   hr
-               p.title_desc.flex.justify_center
-                  a(href="#") All
-                  a(href="#") Branding
-                  a(href="#") Design
-                  a(href="#") Development
-                  a(href="#") Strategy
-               .cards.grid
+               p.categories.title_desc.flex.justify_center
+                  a#catAll.activeCategory(href="#" data-category="") All
+                  a#catBranding(href="#" data-category="Branding") Branding
+                  a#catDesign(href="#" data-category="Design") Design
+                  a#catDevelopment(href="#" data-category="Development") Development
+                  a#catStrategy(href="#" data-category="Strategy") Strategy
+               .workCards.grid.hiddenChild
                   +cardsWorks(cardWorks)
 
          #getInTouch.getInTouch.bg_parallax
@@ -95,13 +95,13 @@ html(lang="en")
                p Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
                button.btn(id="getInTouchBtn" type="button") Get in Touch
 
-         section#blog.blog
+         section#blog.blog.hiddenBlock
             .wrapper
                h2 Recent blog posts
                .flex.justify_center
                   hr
                p.title_desc.flex.justify_center Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-               .posts 
+               .posts.hiddenChild 
                   +post(posts.first)
                   hr
                   +post(posts.second)
@@ -127,7 +127,7 @@ html(lang="en")
                .markers 
                   span
 
-         section#contacts.contacts
+         section#contacts.contacts.hiddenBlock
             .wrapper
                h2 Get in touch
                .flex.justify_center
@@ -155,7 +155,7 @@ html(lang="en")
                            a(href="mailto:shapedtheme@gmail.com ")  shapedtheme@gmail.com 
                            br
                            a(href="mailto:khalilkode@gmail.com")  khalilkode@gmail.com
-                  form(action="" method="post" id="contactForm").contact_form 
+                  form(action="" method="post" id="contactForm").contact_form.hiddenChild 
                      .form_row.flex
                         label
                            input(type="text" name="name" required placeholder="Your Name")
@@ -169,7 +169,7 @@ html(lang="en")
                            input(type="text" name="company" placeholder="Company name")
                      .ta
                         label
-                           textarea(name="message" placeholder="Write your message") 
+                           textarea(name="message" placeholder="Write your message")
                      .tr.flex.justify_start
                         button(type="button" id="showConfirmBtn" disabled).disabledBtn.btn Send message
                         p.nota 

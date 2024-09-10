@@ -97,6 +97,7 @@ img
    padding: 15rem
    min-width: 180rem
    color: $colorSecondary
+   font-family: $fontSecondary
    font-size: 16rem
    text-transform: uppercase
    background-color: transparent
@@ -117,16 +118,19 @@ img
       z-index: 10
       padding: 30rem 0
       width: 100%
-      transition: top .3s
+      transition: top .5s
+   .hide 
+      top: -100%
    h1 a 
       color: $colorSecondary
       font-weight: 700
       font-size: 24rem
-      line-height: 1.5em
    h1:hover a
       transform: scale(1.15)
 .header_bgc
    background-color: $colorHover
+.header_bgc_tr
+   background-color: $bgColorSecondary
 
 .error
    position: absolute
@@ -143,26 +147,26 @@ img
    +media(500)
       display: none
    position: relative
-   width: 30px
-   height: 25px
+   width: 25px
+   height: 30rem
    cursor: pointer
-   &:hover span, 
-   &:hover span::before, 
-   &:hover span::after
-      background-color: $colorHover
+   // &:hover span, 
+   // &:hover span::before, 
+   // &:hover span::after
+   //    background-color: $colorHover
    span, span::before, span::after
       content: ""
       position: absolute
-      width: 30px
-      height: 3px
+      width: 25px
+      height: 2px
       top: calc(50% - 1px)
       left: 0
       background-color: $bgColorMain
       transition: .3s
    span::before
-      top: -10px
+      top: -7px
    span::after
-      top: 10px
+      top: 7px
 .hamburger_open span,
 .hamburger_open:hover span
    background-color: transparent
@@ -176,7 +180,7 @@ img
 .nav
    +mediaMax(499)
       position: fixed
-      top: calc(25px + 60rem)
+      top: 90rem
       left: 100%
       right: 0
       z-index: 10
@@ -271,8 +275,30 @@ img
       margin: 30rem 0 45rem
       font-size: 24rem
       font-family: $fontSecondary
+   .btn
+      font-family: $fontMain
+
+.hiddenBlock
+   overflow-x: hidden
+   opacity: 0
+   transition: opacity 0.5s
+
+.appearBlock
+   opacity: 1
+
+.hiddenChild
+   // position: relative
+   // left: 100vw
+   // transition: left 0.5s
+   transform: translateX(100vw)
+   transition: transform 0.5s
+
+.appearChild
+   left: 0
+   transform: translateX(0)
 
 h2
+   font-weight: 500
    font-size: 20rem
    line-height: 1.2em
    text-transform: uppercase
@@ -352,8 +378,13 @@ p.title_desc
    .carouselBtn.btnRight
       right: 0
    .carousel 
-      flex-wrap: nowrap
-      justify-content: space-between
+      justify-content: center
+      +media(570)
+         justify-content: space-around
+      +media(1280)
+         justify-content: space-between
+      // flex-wrap: nowrap
+      // justify-content: space-between
       column-gap: 29.33px
       transition: transform 0.5s ease-in-out
       .cardDev
@@ -396,6 +427,9 @@ p.title_desc
          &:hover
             color: $colorHover
             transform: scale(1.1)
+      .activeCategory
+         color: $colorHover
+
    .cardWork
       margin: auto
       max-width: 360px
@@ -618,7 +652,6 @@ p.title_desc
    width: auto
    +media(571)
       width: calc((100% - 30rem) * 2 / 3)
-   font-family: "Myriad Pro", $fontSecondary
    &>*
       margin-bottom: 20rem
    .form_row
@@ -640,6 +673,7 @@ p.title_desc
       width: 100%
       padding: 15rem
       color: $colorMain
+      font-family: $fontSecondary
       font-size: 16rem
       background-color: $bgColorMain
       outline: none
@@ -657,6 +691,11 @@ p.title_desc
       min-height: 105rem
       max-height: 200rem
       text-transform: none
+   .tr 
+      flex-wrap: wrap-reverse
+      justify-content: center
+      +media(570)
+         justify-content: flex-start
    .btn
       color: $colorMain
       font-size: 12rem
