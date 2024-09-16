@@ -43,7 +43,7 @@
           <form class="contact_form relative" action="" method="post"><span id="closeBtn">X</span>
             <h2>Sign up</h2>
             <label>
-              <input type="text" name="name" required placeholder="Your Name*">
+              <input type="text" name="name" placeholder="Your Name">
             </label>
             <label class="relative">
               <input class="email" type="email" name="email" required placeholder="Your E-mail*"><span class="errorEmail error"></span>
@@ -51,7 +51,7 @@
             <label class="relative">
               <input id="tel" type="tel" name="tel" placeholder="Your Phone"><span class="error" id="errorTel"></span>
             </label><span class="block nota">* This fields are required</span>
-            <button class="disabledBtn btn" id="signBtn" type="button" disabled>Accept</button>
+            <button class="disabledBtn btn" id="signBtn" type="submit" disabled>Accept</button>
           </form>
         </div>
         <div class="wrapper"> 
@@ -365,10 +365,10 @@
             <form class="contact_form hiddenChild" action="" method="post" id="contactForm"> 
               <div class="form_row flex">
                 <label>
-                  <input type="text" name="name" required placeholder="Your Name">
+                  <input type="text" name="name" placeholder="Your Name">
                 </label>
                 <label class="relative">
-                  <input class="email" type="email" name="email" required placeholder="Your E-mail"><span class="errorEmail error"></span>
+                  <input class="email" type="email" name="email" required placeholder="Your E-mail*"><span class="errorEmail error"></span>
                 </label>
               </div>
               <div class="form_row flex">
@@ -388,16 +388,16 @@
                 <button class="disabledBtn btn" type="button" id="showConfirmBtn" disabled>Send message</button>
                 <p class="nota"> <span>*</span>&nbsp;We’ll contact you as as possible. We don’t reply on Monday.</p>
               </div>
-              <div class="sendMsgPopup hidden" id="sendMsgPopup">
-                <div class="contact_form relative" id="sendMsgWrap">
-                  <h2>Send this message?</h2>
-                  <div class="flex justify_center">
-                    <button class="btn" id="cancelBtn" type="button">Cancel</button>
-                    <button class="btn" id="confirmBtn" type="submit">Confirm</button>
-                  </div>
+            </form>
+            <div class="sendMsgPopup hidden" id="sendMsgPopup">
+              <div class="contact_form relative" id="sendMsgWrap">
+                <h2>Send this message?</h2>
+                <div class="flex justify_center">
+                  <button class="btn" id="cancelBtn" form="contactForm" type="button">Cancel</button>
+                  <button class="btn" id="confirmBtn" form="contactForm" type="submit">Confirm</button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </section>

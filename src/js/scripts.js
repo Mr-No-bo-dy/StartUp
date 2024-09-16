@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Show/Hide Nav menu
     const header = document.querySelector('#header .header_line');
     let lastScroll = 0;
-    document.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function () {
         let scroll = window.scrollY;
         if (scroll > lastScroll) {
             header.classList.add('hide');
@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (string.length >= 10) {
                 if ((string.includes('(') && !string.includes(')')) || (!string.includes('(') && string.includes(')'))) {
                     signErrors['tel'] = true;
-                    disabledBtn.setAttribute('disabled', '');
                     errorTel.innerHTML = 'Неправильно введений номер';
                 } else if (phoneRegEx1.test(string) || phoneRegEx2.test(string) || phoneRegEx3.test(string)) {
                     signErrors['tel'] = false;
@@ -103,19 +102,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         errorTel.innerHTML = '';
                     } else {
                         signErrors['tel'] = true;
-                        disabledBtn.setAttribute('disabled', '');
                         errorTel.innerHTML = 'Неправильно введений номер';
                     }
                 }
             } else {
                 signErrors['tel'] = true;
-                disabledBtn.setAttribute('disabled', '');
             }
         } else {
             signErrors['tel'] = false;
         }
         if (!signErrors['tel'] && !signErrors['email']) {
             disabledBtn.removeAttribute('disabled');
+        } else {
+            disabledBtn.setAttribute('disabled', '');
         }
     }
 
@@ -137,16 +136,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         errorEmail.innerHTML = '';
                     } else {
                         signErrors['email'] = true;
-                        disabledBtn.setAttribute('disabled', '');
                         errorEmail.innerHTML = 'Такої ел. адреси не існує';
                     }
                 }
             } else {
                 signErrors['email'] = true;
-                disabledBtn.setAttribute('disabled', '');
             }
             if (!signErrors['tel'] && !signErrors['email']) {
                 disabledBtn.removeAttribute('disabled');
+            } else {
+                disabledBtn.setAttribute('disabled', '');
             }
         }
     });
@@ -176,7 +175,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Registration imitation
     const confirmBtn = document.querySelector('#signBtn');
-    confirmBtn.addEventListener('click', function() {
+    confirmBtn.addEventListener('click', function(ev) {
+        ev.preventDefault();    // block sending form
         const name = confirmBtn.closest('form').querySelector('[name="name"]'),
             email = confirmBtn.closest('form').querySelector('[name="email"]'),
             tel = confirmBtn.closest('form').querySelector('[name="tel"]');
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('keydown', function (ev) {
             if (ev.key === 'Escape') closePopup();
         });
-        form.querySelector('#cancelBtn').onclick = closePopup;
+        document.querySelector('#cancelBtn').onclick = closePopup;
     }
     showConfirmBtn.addEventListener('click', showConfirmPopup);
 
@@ -280,7 +280,11 @@ document.addEventListener('DOMContentLoaded', function () {
         form.querySelector('[name="name"]').value = user.name;
         form.querySelector('[name="email"]').value = user.email;
         showConfirmBtn.removeAttribute('disabled');
-        document.querySelector('#home .welcome').innerText += `, ${user.name}`;
+        if (user.name) {
+            document.querySelector('#home .welcome').innerText += `, ${user.name}`;
+        } else {
+            document.querySelector('#home .welcome').innerText += `, anonymous`;
+        }
     }
 
     // Smooth appearance of content while scrolling down page
@@ -338,11 +342,13 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.classList.remove('activeCategory');
             if (btn.getAttribute('data-category') === activeCat) {
                 btn.classList.add('activeCategory');
+            } else if (!activeCat && btn.getAttribute('data-category') === '') {
+                btn.classList.add('activeCategory');
             }
         });
         showWorks(filteredWorks);
     }
-    setWorks(activeCategory);
+    if (activeCategory) setWorks(activeCategory);
     catBtns.forEach(function(btn) {
         btn.addEventListener('click', function(ev) {
             ev.preventDefault();

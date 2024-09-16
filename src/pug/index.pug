@@ -31,7 +31,7 @@ html(lang="en")
                   span#closeBtn X
                   h2 Sign up
                   label
-                     input(type="text" name="name" required placeholder="Your Name*")
+                     input(type="text" name="name" placeholder="Your Name")
                   label.relative
                      input(type="email" name="email" required placeholder="Your E-mail*").email
                      span.errorEmail.error
@@ -39,7 +39,7 @@ html(lang="en")
                      input(id="tel" type="tel" name="tel" placeholder="Your Phone")
                      span(id="errorTel").error
                   span.block.nota * This fields are required
-                  button(id="signBtn" type="button" disabled).disabledBtn.btn Accept
+                  button(id="signBtn" type="submit" disabled).disabledBtn.btn Accept
             .wrapper 
                h2.welcome Welcome to STARTUP
                p.title_desc Your Favourite Creative Agency Template
@@ -158,9 +158,9 @@ html(lang="en")
                   form(action="" method="post" id="contactForm").contact_form.hiddenChild 
                      .form_row.flex
                         label
-                           input(type="text" name="name" required placeholder="Your Name")
+                           input(type="text" name="name" placeholder="Your Name")
                         label.relative
-                           input(type="email" name="email" required placeholder="Your E-mail").email
+                           input(type="email" name="email" required placeholder="Your E-mail*").email
                            span.errorEmail.error
                      .form_row.flex
                         label
@@ -175,12 +175,12 @@ html(lang="en")
                         p.nota 
                            span *
                            | &nbsp;We’ll contact you as as possible. We don’t reply on Monday.
-                     #sendMsgPopup.sendMsgPopup.hidden
-                        #sendMsgWrap.contact_form.relative
-                           h2 Send this message?
-                           .flex.justify_center
-                              button(id="cancelBtn" type="button").btn Cancel
-                              button(id="confirmBtn" type="submit").btn Confirm
+                  #sendMsgPopup.sendMsgPopup.hidden
+                     #sendMsgWrap.contact_form.relative
+                        h2 Send this message?
+                        .flex.justify_center
+                           button(id="cancelBtn" form="contactForm" type="button").btn Cancel
+                           button(id="confirmBtn" form="contactForm" type="submit").btn Confirm
 
       footer.footer 
          .wrapper 
