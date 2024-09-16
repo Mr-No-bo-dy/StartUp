@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Show/Hide Nav menu
     const header = document.querySelector('#header .header_line');
     let lastScroll = 0;
-    window.addEventListener('scroll', function () {
+    function toggleHeader() {
         let scroll = window.scrollY;
         if (scroll > lastScroll) {
             header.classList.add('hide');
@@ -49,8 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
             header.classList.add('header_bgc');
         } else {
             header.classList.remove('header_bgc');
-        }
-    });
+        }        
+    }
+    window.addEventListener('scroll', toggleHeader);
+    // window.addEventListener('wheel', toggleHeader);
+    window.addEventListener('touchmove', toggleHeader);
 
     // Smooth scroll to certain block on same page
     document.querySelectorAll('.header_menu a').forEach(function (link) {
@@ -92,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (string.length >= 10) {
                 if ((string.includes('(') && !string.includes(')')) || (!string.includes('(') && string.includes(')'))) {
                     signErrors['tel'] = true;
-                    errorTel.innerHTML = 'Неправильно введений номер';
+                    errorTel.innerHTML = 'Wrong number';
                 } else if (phoneRegEx1.test(string) || phoneRegEx2.test(string) || phoneRegEx3.test(string)) {
                     signErrors['tel'] = false;
                     errorTel.innerHTML = '';
@@ -102,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         errorTel.innerHTML = '';
                     } else {
                         signErrors['tel'] = true;
-                        errorTel.innerHTML = 'Неправильно введений номер';
+                        errorTel.innerHTML = 'Wrong number';
                     }
                 }
             } else {
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         errorEmail.innerHTML = '';
                     } else {
                         signErrors['email'] = true;
-                        errorEmail.innerHTML = 'Такої ел. адреси не існує';
+                        errorEmail.innerHTML = 'Such email does NOT exist';
                     }
                 }
             } else {
@@ -174,23 +177,29 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#getStarted').addEventListener('click', showPopup);
 
     // Registration imitation
-    const confirmBtn = document.querySelector('#signBtn');
-    confirmBtn.addEventListener('click', function(ev) {
-        ev.preventDefault();    // block sending form
-        const name = confirmBtn.closest('form').querySelector('[name="name"]'),
-            email = confirmBtn.closest('form').querySelector('[name="email"]'),
-            tel = confirmBtn.closest('form').querySelector('[name="tel"]');
-        let userData = {
-            'name': name.value, 
-            'email': email.value, 
-            'tel': tel.value,
-        };
-        localStorage.setItem('user', JSON.stringify(userData));
-        name.value = null;
-        email.value = null;
-        tel.value = null;
-        closePopup();
-    });
+    document.querySelectorAll('.contact_form [data-sign]').forEach(function(btn) {
+        btn.addEventListener('click', function(ev) {
+            console.log(btn);
+            ev.preventDefault();    // block sending form
+            const name = btn.closest('form').querySelector('[name="name"]'),
+                email = btn.closest('form').querySelector('[name="email"]'),
+                tel = btn.closest('form').querySelector('[name="tel"]');
+            let userData = {
+                'name': name.value, 
+                'email': email.value, 
+                'tel': tel ? tel.value : '',
+            };
+            localStorage.setItem('user', JSON.stringify(userData));
+            name.value = null;
+            email.value = null;
+            if (tel) tel.value = null;
+            if (btn.getAttribute('id') === 'signBtn') {
+                closePopup();
+            } else {
+                closeConfirmPopup();
+            }
+        });
+    })
     // localStorage.removeItem('user');
     // console.log(localStorage.getItem('user'));
 
@@ -258,19 +267,17 @@ document.addEventListener('DOMContentLoaded', function () {
         showConfirmBtn = form.querySelector('#showConfirmBtn');
     function showConfirmPopup() {
         confirmPopup.classList.remove('hidden');
-
-        // Close confirmPopup
-        function closePopup() {
-            confirmPopup.classList.add('hidden');
-            signErrors['email'] = false;
-        }
         confirmPopup.addEventListener('click', function (ev) {
-            if (ev.target === confirmPopup) closePopup();
+            if (ev.target === confirmPopup) closeConfirmPopup();
         });
         document.addEventListener('keydown', function (ev) {
-            if (ev.key === 'Escape') closePopup();
+            if (ev.key === 'Escape') closeConfirmPopup();
         });
-        document.querySelector('#cancelBtn').onclick = closePopup;
+        document.querySelector('#cancelBtn').onclick = closeConfirmPopup;
+    }
+    function closeConfirmPopup() {
+        confirmPopup.classList.add('hidden');
+        signErrors['email'] = false;
     }
     showConfirmBtn.addEventListener('click', showConfirmPopup);
 
