@@ -39,19 +39,19 @@
     </header>
     <main class="main"> 
       <section class="home flex bg_parallax" id="home"> 
-        <div class="hidden" id="sign_popup">
-          <form class="contact_form relative" action="" method="post"><span class="closeBtn" id="closeBtn">+</span>
-            <h2>Sign up</h2>
-            <label>
-              <input type="text" name="name" placeholder="Your Name">
+        <div class="hidden" id="signInPopUp">
+          <form class="contact_form relative" id="signInForm" action="" method="post"><span class="closeBtn" id="closeBtn">+</span>
+            <div>
+              <h2>Sign in</h2>
+              <div id="credentialError"></div>
+            </div>
+            <label class="relative">
+              <input class="name" type="text" name="name" required placeholder="Your Name"><span class="errorName error"></span>
             </label>
             <label class="relative">
-              <input class="email" type="email" name="email" required placeholder="Your E-mail*"><span class="errorEmail error"></span>
+              <input class="email" type="email" name="email" required placeholder="Your E-mail"><span class="errorEmail error"></span>
             </label>
-            <label class="relative">
-              <input id="tel" type="tel" name="tel" placeholder="Your Phone"><span class="error" id="errorTel"></span>
-            </label><span class="block nota">* This fields are required</span>
-            <button class="disabledBtn btn" id="signBtn" type="submit" data-sign="true" disabled>Accept</button>
+            <button class="disabledBtn btn" id="signInBtn" type="button" data-sign="true" disabled>Accept</button>
           </form>
         </div>
         <div class="wrapper"> 
@@ -350,7 +350,7 @@
       </section>
       <section class="contacts hiddenBlock" id="contacts">
         <div class="wrapper">
-          <h2>Get in touch</h2>
+          <h2>Sign up</h2>
           <div class="flex justify_center">
             <hr>
           </div>
@@ -371,10 +371,10 @@
                 <p> <a href="mailto:shapedtheme@gmail.com "> shapedtheme@gmail.com </a><br><a href="mailto:khalilkode@gmail.com"> khalilkode@gmail.com</a></p>
               </div>
             </div>
-            <form class="contact_form hiddenChild" action="" method="post" id="contactForm"> 
+            <form class="contact_form hiddenChild" id="signUpForm" action="" method="post"> 
               <div class="form_row flex">
-                <label>
-                  <input type="text" name="name" placeholder="Your Name">
+                <label class="relative">
+                  <input class="name" type="text" name="name" required placeholder="Your Name*"><span class="errorName error"></span>
                 </label>
                 <label class="relative">
                   <input class="email" type="email" name="email" required placeholder="Your E-mail*"><span class="errorEmail error"></span>
@@ -384,8 +384,8 @@
                 <label>
                   <input type="text" name="subject" placeholder="Your subject">
                 </label>
-                <label>
-                  <input type="text" name="company" placeholder="Company name">
+                <label class="relative">
+                  <input class="tel" id="tel" type="tel" name="tel" placeholder="Your Phone"><span class="error" id="errorTel"></span>
                 </label>
               </div>
               <div class="ta">
@@ -394,15 +394,15 @@
                 </label>
               </div>
               <div class="tr flex justify_start">
-                <button class="disabledBtn btn" type="button" id="showConfirmBtn" disabled>Send message</button>
+                <button class="disabledBtn btn" id="showConfirmBtn" type="button" disabled>Register</button>
                 <p class="nota"> <span>*</span>&nbsp;We’ll contact you as as possible. We don’t reply on Monday.</p>
               </div>
-              <div class="sendMsgPopup hidden" id="sendMsgPopup">
-                <div class="contact_form relative" id="sendMsgWrap">
-                  <h2>Send this message?</h2>
+              <div class="signUpPopUp hidden" id="signUpPopUp">
+                <div class="contact_form relative" id="signUpWrap">
+                  <h2>Are this data correct?</h2>
                   <div class="flex justify_center">
-                    <button class="btn" id="cancelBtn" form="contactForm" type="button">Cancel</button>
-                    <button class="btn" id="confirmBtn" form="contactForm" type="submit" data-sign="true">Confirm</button>
+                    <button class="btn" id="cancelBtn" type="button">Cancel</button>
+                    <button class="btn" id="signUpBtn" type="button" data-sign="true">Confirm</button>
                   </div>
                 </div>
               </div>

@@ -19,7 +19,7 @@ html
       font-size: 1.1px
    +media(2560) 
       font-size: 1.2px
-   // scroll-behavior: smooth
+   scroll-behavior: smooth
 
 body
    color: $colorMain
@@ -130,7 +130,7 @@ img
 
 .error
    position: absolute
-   top: calc(100% - 1px)
+   top: 100%
    left: 0
    font-size: 12rem
    color: $colorHover
@@ -202,7 +202,7 @@ img
    &:hover
       transform: scale(1.15)
 
-#sign_popup, #sendMsgPopup
+#signInPopUp, #signUpPopUp
    position: fixed
    top: 0
    left: 0
@@ -226,6 +226,9 @@ img
       h2
          font-size: 30rem
          color: $colorMain
+      #credentialError
+         font-size: 14rem
+         color: $colorHover
       label
          display: block
          margin: 25rem auto
@@ -249,9 +252,6 @@ img
          background-color: rgba($colorThird, 0.7)
          border-color: black
          cursor: default
-   .sendMsgPopup
-      .flex
-         column-gap: 40rem
 
 .home
    padding-top: 96rem
@@ -686,7 +686,7 @@ p.title_desc
          flex-direction: row
          flex-wrap: nowrap
       align-items: stretch
-      row-gap: 20rem
+      row-gap: 25rem
       column-gap: 30rem
    .form_row>*
       +media(768)

@@ -26,24 +26,23 @@ html(lang="en")
 
       main.main 
          section#home.home.flex.bg_parallax 
-            #sign_popup.hidden
-               form(action="", method="post").contact_form.relative
+            #signInPopUp.hidden
+               form#signInForm.contact_form.relative(action="", method="post")
                   span#closeBtn.closeBtn +
-                  h2 Sign up
-                  label
-                     input(type="text" name="name" placeholder="Your Name")
+                  div
+                     h2 Sign in
+                     #credentialError
                   label.relative
-                     input(type="email" name="email" required placeholder="Your E-mail*").email
+                     input.name(type="text" name="name" required placeholder="Your Name")
+                     span.errorName.error
+                  label.relative
+                     input.email(type="email" name="email" required placeholder="Your E-mail")
                      span.errorEmail.error
-                  label.relative
-                     input(id="tel" type="tel" name="tel" placeholder="Your Phone")
-                     span(id="errorTel").error
-                  span.block.nota * This fields are required
-                  button(id="signBtn" type="submit" data-sign="true" disabled).disabledBtn.btn Accept
+                  button#signInBtn.disabledBtn.btn(type="button" data-sign="true" disabled) Accept
             .wrapper 
                h2.welcome Welcome to STARTUP
                p.title_desc Your Favourite Creative Agency Template
-               button.btn(id="getStarted" type="button") Get Started
+               button#getStarted.btn(type="button") Get Started
 
          section#services.services.hiddenBlock 
             .wrapper
@@ -152,7 +151,7 @@ html(lang="en")
 
          section#contacts.contacts.hiddenBlock
             .wrapper
-               h2 Get in touch
+               h2 Sign up
                .flex.justify_center
                   hr
                p.title_desc Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
@@ -178,32 +177,34 @@ html(lang="en")
                            a(href="mailto:shapedtheme@gmail.com ")  shapedtheme@gmail.com 
                            br
                            a(href="mailto:khalilkode@gmail.com")  khalilkode@gmail.com
-                  form(action="" method="post" id="contactForm").contact_form.hiddenChild 
+                  form#signUpForm.contact_form.hiddenChild(action="" method="post") 
                      .form_row.flex
-                        label
-                           input(type="text" name="name" placeholder="Your Name")
                         label.relative
-                           input(type="email" name="email" required placeholder="Your E-mail*").email
+                           input.name(type="text" name="name" required placeholder="Your Name*")
+                           span.errorName.error
+                        label.relative
+                           input.email(type="email" name="email" required placeholder="Your E-mail*")
                            span.errorEmail.error
                      .form_row.flex
                         label
                            input(type="text" name="subject" placeholder="Your subject")
-                        label
-                           input(type="text" name="company" placeholder="Company name")
+                        label.relative
+                           input#tel.tel(type="tel" name="tel" placeholder="Your Phone")
+                           span#errorTel.error
                      .ta
                         label
                            textarea(name="message" placeholder="Write your message")
                      .tr.flex.justify_start
-                        button(type="button" id="showConfirmBtn" disabled).disabledBtn.btn Send message
+                        button#showConfirmBtn.disabledBtn.btn(type="button" disabled) Register
                         p.nota 
                            span *
                            | &nbsp;We’ll contact you as as possible. We don’t reply on Monday.
-                     #sendMsgPopup.sendMsgPopup.hidden
-                        #sendMsgWrap.contact_form.relative
-                           h2 Send this message?
+                     #signUpPopUp.signUpPopUp.hidden
+                        #signUpWrap.contact_form.relative
+                           h2 Are this data correct?
                            .flex.justify_center
-                              button(id="cancelBtn" form="contactForm" type="button").btn Cancel
-                              button(id="confirmBtn" form="contactForm" type="submit" data-sign="true").btn Confirm
+                              button#cancelBtn.btn(type="button") Cancel
+                              button#signUpBtn.btn(type="button" data-sign="true") Confirm
 
       footer.footer 
          .wrapper 
