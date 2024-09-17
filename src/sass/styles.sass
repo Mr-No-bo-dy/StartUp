@@ -6,9 +6,7 @@
    font-size: 12rem
 
 html
-   font-size: 0.5px
-   +media(500) 
-      font-size: 0.6px
+   font-size: 0.6px
    +media(768) 
       font-size: 0.7px
    +media(1024) 
@@ -127,9 +125,7 @@ img
       font-size: 24rem
    h1:hover a
       transform: scale(1.15)
-.header_bgc
-   background-color: $colorHover
-.header_bgc_tr
+.header_bgc, .header_bgc_tr
    background-color: $bgColorSecondary
 
 .error
@@ -150,10 +146,6 @@ img
    width: 25px
    height: 30rem
    cursor: pointer
-   &:hover span, 
-   &:hover span::before, 
-   &:hover span::after
-      background-color: $colorHover
    span, span::before, span::after
       content: ""
       position: absolute
@@ -240,12 +232,12 @@ img
          width: 70%
       #closeBtn
          position: absolute
-         top: 15rem
-         right: 15rem
+         top: 5rem
+         right: 12rem
          color: $colorMain
          font-family: Arial, sans-serif
-         font-weight: bold
-         font-size: 16rem
+         font-size: 30rem
+         transform: rotate(45deg)
          cursor: pointer
          &:hover
             color: $colorHover
@@ -259,20 +251,22 @@ img
          cursor: default
    .sendMsgPopup
       .flex
-         column-gap: 60rem
+         column-gap: 40rem
 
 .home
    padding-top: 96rem
-   min-height: 674rem
+   min-height: 60vh
+   +media(768)
+      min-height: 674rem
    color: $colorSecondary
    text-align: center
-   background: $colorHover url(../img/bg_home_full_2.jpg) no-repeat center / 116%
+   background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(../img/bg_home_full_2.jpg) no-repeat center / 116%
    // transition: background-position 0.05s
    h2
       font-size: 48rem
       text-transform: uppercase
    p
-      margin: 30rem 0 45rem
+      margin: 20rem 0 40rem
       font-size: 24rem
       font-family: $fontSecondary
    .btn
@@ -318,7 +312,7 @@ p.title_desc
       margin-top: 55rem
    figure
       margin: auto
-      padding: 15rem
+      padding: 25rem 15rem
       width: 90%
       +media(768)
          width: 45%
@@ -329,6 +323,21 @@ p.title_desc
       transition: .3s
       &:hover
          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+         .card_img
+            background-color: $colorHover
+            svg
+               fill: $colorSecondary
+      .card_img
+         margin: auto
+         width: 90rem
+         height: 90rem
+         border: 2px solid #ddd
+         border-radius: 50%
+         svg
+            fill: $colorHover
+            padding: 8px
+            +media(768)
+               padding: 5px
       h3
          font-size: 14rem
          line-height: 1.7em
@@ -366,17 +375,28 @@ p.title_desc
       z-index: 2
       width: 35rem
       height: 38rem
-      color: $colorSecondary
-      font-weight: bold
       background-color: rgba($colorMain, 0.35)
       border: none
       &:hover 
          background-color: $bgColorSecondary
          cursor: pointer
+      span
+         position: absolute
+         top: 14rem
+         left: 14rem
+         display: inline-block
+         width: 10rem
+         height: 10rem
+         border-top: 2px solid #ddd
+         border-left: 2px solid #ddd
+         transform: rotate(-45deg)
    .carouselBtn.btnLeft
       left: 0
    .carouselBtn.btnRight
       right: 0
+      span
+         left: 11rem
+         transform: rotate(135deg)
    .carousel 
       justify-content: center
       +media(570)
@@ -390,7 +410,11 @@ p.title_desc
       .cardDev
          transition: transform 0.5s ease-in-out
    .pic
+      // picture
+      //    display: inline-block
+      //    width: 100%
       img
+         // width: 100%
          transition: .3s
       &:hover img
          filter: contrast(115%)
@@ -536,6 +560,7 @@ p.title_desc
          color: $colorThird
          font-weight: 700
          font-size: 24rem
+         line-height: 1em
          letter-spacing: 2px
          text-transform: uppercase
       .month
@@ -726,6 +751,7 @@ p.title_desc
       &:hover
          transform: scale(1.1)
    hr
+      margin: 30rem 0 27rem
       border-color: $bgColorMain
    p
       font-size: 12rem

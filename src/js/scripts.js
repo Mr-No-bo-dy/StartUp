@@ -65,14 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.querySelector('#getInTouchBtn').addEventListener('click', function (ev) {
         ev.preventDefault();
-        document.querySelector('#contactForm').scrollIntoView({behavior: 'smooth'});
+        document.querySelector('#contacts').scrollIntoView({behavior: 'smooth'});
     });
 
     // Parallax on backgrounds
     document.querySelectorAll('.bg_parallax').forEach(function (block) {
         function parallax(ev) {
-            let moveX = (((ev.pageX - window.scrollX) / window.innerWidth) - 0.5) * 70,
-                moveY = (((ev.pageY - window.scrollY) / window.innerHeight) - 0.5) * 20;
+            let moveX = (((ev.pageX - window.scrollX) / window.innerWidth) - 0.5) * 80,
+                moveY = (((ev.pageY - window.scrollY) / window.innerHeight) - 0.5) * 30;
             block.style.backgroundPosition = `${50 + moveX}% ${50 + moveY}%`;
         }
         block.addEventListener('mousemove', parallax);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (phoneRegEx1.test(string) || phoneRegEx2.test(string) || phoneRegEx3.test(string)) {
                     signErrors['tel'] = false;
                     errorTel.innerHTML = '';
-                } else {
+                } else {    // controll check
                     if (phoneRegEx1.test(string) || phoneRegEx2.test(string) || phoneRegEx3.test(string)) {
                         signErrors['tel'] = false;
                         errorTel.innerHTML = '';
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (emailRegEx.test(string)) {
                     signErrors['email'] = false;
                     errorEmail.innerHTML = '';
-                } else {
+                } else {    // controll check
                     if (emailRegEx.test(string)) {
                         signErrors['email'] = false;
                         errorEmail.innerHTML = '';
@@ -179,7 +179,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Registration imitation
     document.querySelectorAll('.contact_form [data-sign]').forEach(function(btn) {
         btn.addEventListener('click', function(ev) {
-            console.log(btn);
             ev.preventDefault();    // block sending form
             const name = btn.closest('form').querySelector('[name="name"]'),
                 email = btn.closest('form').querySelector('[name="email"]'),

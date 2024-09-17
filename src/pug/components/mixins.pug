@@ -7,13 +7,13 @@ mixin headerMenu(items)
             li
                a(href=item.url) #{item.name} 
 
-mixin figureServices(item) 
-   figure(class="card")
-      figcaption 
-         picture
-            img(src=item.src + ".png" alt=item.alt class=item.click) 
-         h3(class=item.hack)= item.title 
-         p= item.description
+//- mixin figureServices(item) 
+//-    figure(class="card")
+//-       figcaption 
+//-          picture
+//-             img(src=item.src + ".png" alt=item.alt class=item.click) 
+//-          h3(class=item.hack)= item.title 
+//-          p= item.description
 
 mixin figureAboutUs(item) 
    figure(class="cardDev " + item.number)
