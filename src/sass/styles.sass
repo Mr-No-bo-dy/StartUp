@@ -371,7 +371,7 @@ p.title_desc
       overflow: hidden
    .carouselBtn
       position: absolute
-      top: 34%
+      top: 37%
       z-index: 2
       width: 35rem
       height: 38rem
@@ -398,23 +398,18 @@ p.title_desc
          left: 11rem
          transform: rotate(135deg)
    .carousel 
-      justify-content: center
-      +media(570)
-         justify-content: space-around
-      +media(1280)
-         justify-content: space-between
-      // flex-wrap: nowrap
-      // justify-content: space-between
+      flex-wrap: nowrap
+      justify-content: space-between
       column-gap: 29.33px
       transition: transform 0.5s ease-in-out
       .cardDev
          transition: transform 0.5s ease-in-out
    .pic
-      // picture
-      //    display: inline-block
-      //    width: 100%
+      picture
+         display: inline-block
+         width: 100%
       img
-         // width: 100%
+         width: 100%
          transition: .3s
       &:hover img
          filter: contrast(115%)
