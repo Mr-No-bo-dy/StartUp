@@ -85,12 +85,12 @@ html(lang="en")
                .aboutus_desc.flex.justify_center
                   p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
                   p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
-               .devs.carousel-wrapper.relative.hiddenChild
-                  button(id="carouselLeft" type="button").carouselBtn.btnLeft
+               .devs.carousel.relative.hiddenChild
+                  button#carouselLeft.carouselBtn.btnLeft(type="button")
                      span
-                  button(id="carouselRight" type="button").carouselBtn.btnRight
+                  button#carouselRight.carouselBtn.btnRight(type="button")
                      span
-                  .carousel.flex
+                  .carousel_container.flex
                      +figureAboutUs(cardAboutUs.first)
                      +figureAboutUs(cardAboutUs.second)
                      +figureAboutUs(cardAboutUs.third)
@@ -137,17 +137,9 @@ html(lang="en")
                   img(src="img/brand_4.png", alt="brand bcause")
                   img(src="img/brand_5.png", alt="brand womgify")
                .reviews
-                  .review
-                     p.comment Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
-                     p.reviewer John Doe, Google Inc.
-                  //- .review
-                  //-    p.comment Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam excepturi expedita facilis dolorem dolore aliquid cum iure eum tempore voluptate.”
-                  //-    p.reviewer Jane Doe, Apple
-                  //- .review
-                  //-    p.comment Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel sed sit, quo sunt reiciendis fugit?”
-                  //-    p.reviewer James Doe, HP
-               .markers 
-                  span
+                  .flex.justify_center
+                     .review_container
+                        +reviews(reviewers)
 
          section#contacts.contacts.hiddenBlock
             .wrapper

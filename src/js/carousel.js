@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const carousel = document.querySelector('.carousel'),
+    const carousel = document.querySelector('.carousel_container'),
         cards = [...document.querySelectorAll('.cardDev')],
-        btnLeft = document.getElementById('carouselLeft'),
-        btnRight = document.getElementById('carouselRight');
+        btnLeft = document.querySelector('#carouselLeft'),
+        btnRight = document.querySelector('#carouselRight');
 
     let currentPosition = 0,
         visibleCards = 1,

@@ -367,7 +367,7 @@ p.title_desc
          justify-content: space-around
       +media(1256)
          justify-content: space-between
-   .carousel-wrapper
+   .carousel
       overflow: hidden
    .carouselBtn
       position: absolute
@@ -397,7 +397,7 @@ p.title_desc
       span
          left: 11rem
          transform: rotate(135deg)
-   .carousel 
+   .carousel_container 
       flex-wrap: nowrap
       justify-content: space-between
       column-gap: 29.33px
@@ -589,22 +589,56 @@ p.title_desc
          transform: scale(1.05)
 
 .clients
-   padding: 95rem 0 90rem
+   padding: 95rem 0 60rem
    background-color: $bgColorThird
    .brands
       column-gap: 60rem
+      margin-bottom: 20rem
+
+.review_container
+   position: relative
+   overflow: hidden
+   width: 100%
+   +media(500)
+      width: 90%
+   +media(768)
+      width: 67%
+   min-height: 200rem
 .review
+   position: absolute
+   display: none
+   opacity: 0
+   width: 100%
    font-family: $fontSecondary
+   transition: opacity 1s ease-in-out
    p
       color: $colorMain
       font-size: 18rem
       line-height: 1.67em
    .comment
-      margin: 50rem auto 30rem
-      max-width: 750rem
+      margin: 30rem auto
       font-style: italic
    .reviewer
       font-size: 20rem
+.review.review_active
+   display: block
+   opacity: 1
+
+.markers
+   display: flex
+   justify-content: center
+   margin-top: 20rem
+   .marker
+      display: inline-block
+      margin: 0 5px
+      width: 13px
+      height: 13px
+      border-radius: 50%
+      background-color: #ddd
+      cursor: pointer
+      transition: background-color 0.3s
+   .marker.marker_active 
+      background-color: $colorHover
 
 .contacts
    padding: 90rem 0 60rem
