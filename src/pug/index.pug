@@ -194,8 +194,19 @@ html(lang="en")
                      #signUpPopUp.signUpPopUp.hidden
                         #signUpWrap.contact_form.relative
                            h2 Are this data correct?
+                           .message_data.text_left
+                              p.name Name: 
+                                 b
+                              p.email Email: 
+                                 b
+                              p.tel Phone: 
+                                 b
+                              p.subject Subject: 
+                                 b
+                              p.message Message: 
+                                 b
                            .flex.justify_center
-                              button#cancelBtn.btn(type="button") Cancel
+                              button#cancelBtn.closeBtn.btn(type="button") Cancel
                               button#signUpBtn.btn(type="button" data-sign="true") Confirm
 
       footer.footer 

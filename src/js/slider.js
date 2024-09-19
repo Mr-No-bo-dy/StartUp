@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < reviews.length; i++) {
             const marker = document.createElement('div');
             marker.classList.add('marker');
-            if (i === 0) marker.classList.add('marker_active')
+            if (i === 0) marker.classList.add('marker_active');
             marker.dataset.index = i;
             marker.addEventListener('click', function () {
                 slideReviews(i);
@@ -29,9 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let maxHeight = 0;
         reviews.forEach(review => {
             const height = review.offsetHeight;
-            if (height > maxHeight) {
-                maxHeight = height;
-            }
+            if (height > maxHeight) maxHeight = height;
         });
         reviewContainer.style.minHeight = `${maxHeight}px`;
     }
@@ -58,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             reviews[currentReview].style.display = 'block';
+            // setMinHeight();
             setTimeout(function () {
                 reviews[currentReview].classList.add('review_active');
                 updateMarkers();
@@ -96,4 +95,18 @@ document.addEventListener('DOMContentLoaded', function () {
         slideReviewsIntervalID = setInterval(slideReviews, animInterval);
         console.log('started');
     });
+
+    // Observer for auto start-stop sliding Reviews
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                slideReviewsIntervalID = setInterval(slideReviews, animInterval);
+                console.log('in view');
+            } else {
+                clearInterval(slideReviewsIntervalID);
+                console.log('out of view');
+            }
+        });
+    });
+    observer.observe(reviewsCarousel);
 });

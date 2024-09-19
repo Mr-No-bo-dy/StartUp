@@ -589,7 +589,7 @@ p.title_desc
          transform: scale(1.05)
 
 .clients
-   padding: 95rem 0 60rem
+   padding: 100rem 0
    background-color: $bgColorThird
    .brands
       column-gap: 60rem
@@ -601,8 +601,10 @@ p.title_desc
    width: 100%
    +media(500)
       width: 90%
-   +media(768)
+   +media(1024)
       width: 67%
+   +media(1920)
+      width: 50%
    min-height: 200rem
 .review
    position: absolute
@@ -627,7 +629,7 @@ p.title_desc
 .markers
    display: flex
    justify-content: center
-   margin-top: 20rem
+   margin-top: 30rem
    .marker
       display: inline-block
       margin: 0 5px
@@ -764,6 +766,16 @@ p.title_desc
       font-family: $fontSecondary
       span
          color: $colorHover
+
+.message_data
+   margin: 0 auto 30rem
+   width: 90%
+   +media(768)
+      width: 70%
+   p
+      margin-bottom: 10rem
+   p, b
+      font-size: 16rem
 
 .footer
    padding: 95rem 0 90rem

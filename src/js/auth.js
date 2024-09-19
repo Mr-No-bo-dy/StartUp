@@ -110,44 +110,61 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Sign up popup
-    function showSighUpPopup() {
-        const signUpPopUp = document.querySelector('#signUpPopUp');
-        signUpPopUp.classList.remove('hidden');
-        signUpPopUp.addEventListener('click', function (ev) {
-            if (ev.target === signUpPopUp) closeSighUpPopup();
+    // Show popup
+    function showPopup(selector) {
+        const popup = document.querySelector(selector);
+        popup.classList.remove('hidden');
+        document.body.classList.add('over_hidden');
+        // Close popup events
+        popup.addEventListener('click', function (ev) {
+            if (ev.target === popup) closePopup(selector);
         });
         document.addEventListener('keydown', function (ev) {
-            if (ev.key === 'Escape') closeSighUpPopup();
+            if (ev.key === 'Escape') closePopup(selector);
         });
-        document.querySelector('#cancelBtn').onclick = closeSighUpPopup;
+        popup.querySelector('.closeBtn').onclick = function () {
+            closePopup(selector);
+        };
     }
-    function closeSighUpPopup() {
-        signUpPopUp.classList.add('hidden');
+    // Close popup
+    function closePopup(selector) {
+        const popup = document.querySelector(selector);
+        popup.classList.add('hidden');
+        document.body.classList.remove('over_hidden');
         signErrors['email'] = false;
+        signErrors['name'] = false;
     }
-    document.querySelector('#showConfirmBtn').addEventListener('click', showSighUpPopup);
+
+    // Save & show user's data to confirmation
+    const confirmBtn = document.querySelector('#showConfirmBtn');
+    let signUpData = {};
+    function showSignUpData() {
+        const form = confirmBtn.closest('form');
+        signUpData.name = form.querySelector('[name="name"]').value;
+        signUpData.email = form.querySelector('[name="email"]').value;
+        signUpData.tel = form.querySelector('[name="tel"]').value;
+        signUpData.subject = form.querySelector('[name="subject"]').value;
+        signUpData.message = form.querySelector('[name="message"]').value;
+        form.querySelector('.message_data .name b').innerText = signUpData.name;
+        form.querySelector('.message_data .email b').innerText = signUpData.email;
+        form.querySelector('.message_data .tel b').innerText = signUpData.tel;
+        form.querySelector('.message_data .subject b').innerText = signUpData.subject;
+        form.querySelector('.message_data .message b').innerText = signUpData.message;
+    }
+    confirmBtn.addEventListener('click', showSignUpData);
+    confirmBtn.addEventListener('click', function (){
+        showPopup('#signUpPopUp');
+    });
 
     // Sign up
     document.querySelector('#signUpBtn').addEventListener('click', function() {
-        const signUpBtn = document.querySelector('#signUpBtn');
-        const name = signUpBtn.closest('form').querySelector('[name="name"]'),
-            email = signUpBtn.closest('form').querySelector('[name="email"]'),
-            tel = signUpBtn.closest('form').querySelector('[name="tel"]'),
-            subject = signUpBtn.closest('form').querySelector('[name="subject"]'),
-            message = signUpBtn.closest('form').querySelector('[name="message"]');
-        let userData = {
-            'name': name.value,
-            'email': email.value,
-            'tel': tel ? tel.value : '',
-            'subject': subject ? subject.value : '',
-            'message': message ? message.value : '',
-        };
-        localStorage.setItem('user', JSON.stringify(userData));
-        closeSighUpPopup();
+        localStorage.setItem('user', JSON.stringify(signUpData));
+        closePopup('#signUpPopUp');
+        signUpData = {};
     });
 
     // Fill registered user's data into message form
+    const welcomeText = document.querySelector('#home .welcome').innerText;
     function fillUserData () {
         if (localStorage.getItem('user') !== null) {
             const signUpForm = document.querySelector('#signUpForm');
@@ -155,52 +172,31 @@ document.addEventListener('DOMContentLoaded', function() {
             signUpForm.querySelector('[name="name"]').value = user.name;
             signUpForm.querySelector('[name="email"]').value = user.email;
             signUpForm.querySelector('[name="tel"]').value = user.tel;
-            document.querySelector('#showConfirmBtn').removeAttribute('disabled');
+            confirmBtn.removeAttribute('disabled');
         }
     }
     fillUserData();
 
-    // Sign in popup
-    function showSignInPopup() {
-        const signInPopUp = document.querySelector('#signInPopUp');
-        signInPopUp.classList.remove('hidden');
-        document.body.classList.add('over_hidden');
-        signInPopUp.addEventListener('click', function (ev) {
-            if (ev.target === signInPopUp) closeSignInPopup();
-        });
-        document.addEventListener('keydown', function (ev) {
-            if (ev.key === 'Escape') closeSignInPopup();
-        });
-        signInPopUp.querySelector('#closeBtn').onclick = closeSignInPopup;
-    }
-        // Close popup
-    function closeSignInPopup() {
-        signInPopUp.classList.add('hidden');
-        document.body.classList.remove('over_hidden');
-        signErrors['tel'] = false;
-        signErrors['email'] = false;
-        signErrors['name'] = false;
-    }
-    document.querySelector('#getStarted').addEventListener('click', showSignInPopup);
-
     // Sign in
-    const welcomeText = document.querySelector('#home .welcome').innerText;
+    document.querySelector('#getStarted').addEventListener('click', function (){
+        showPopup('#signInPopUp');
+    });
     document.querySelector('#signInBtn').addEventListener('click', function() {
         const signInBtn = document.querySelector('#signInBtn'),
             registeredUser = JSON.parse(localStorage.getItem('user')),
             name = signInBtn.closest('form').querySelector('[name="name"]'),
             email = signInBtn.closest('form').querySelector('[name="email"]'),
             loggingUser = {
-            'name': name.value,
-            'email': email.value,
-        };
+                'name': name.value,
+                'email': email.value,
+            };
         if (registeredUser && loggingUser.email === registeredUser.email && 
             loggingUser.name === registeredUser.name) {
             // fillUserData();
-            closeSignInPopup();
+            closePopup('#signInPopUp');
             name.value = null;
             email.value = null;
-            document.querySelector('#home .welcome').innerText = welcomeText + `, ${loggingUser.name}`;
+            document.querySelector('#home .welcome').innerText = `${welcomeText}, ${user.name}`;
         } else {
             document.querySelector('#credentialError').innerText = 'Username or Email is incorrect';
         }

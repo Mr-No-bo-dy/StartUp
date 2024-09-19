@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         cards.forEach(function(card) {
-            card.style.minWidth = cardWidth + 'px';
+            card.style.minWidth = `${cardWidth}px`;
         });
         slideDistance = cardWidth + gap;
 
@@ -87,7 +87,10 @@ document.addEventListener('DOMContentLoaded', function () {
             currentPosition += slideDistance;
             carousel.style.transition = 'transform 0.5s ease-in-out';
             carousel.style.transform = `translateX(${currentPosition}px)`;
-            isSliding = false;
+            carousel.addEventListener('transitionend', function animLeft() {
+                isSliding = false;
+                carousel.removeEventListener('transitionend', animLeft);
+            });
         }, 50);
     }
     btnLeft.addEventListener('click', slideLeft);
