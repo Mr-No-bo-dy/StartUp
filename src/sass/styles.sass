@@ -261,7 +261,6 @@ img
    color: $colorSecondary
    text-align: center
    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(../img/bg_home_full_2.jpg) no-repeat center / 116%
-   // transition: background-position 0.05s
    h2
       font-size: 48rem
       text-transform: uppercase
@@ -284,12 +283,9 @@ img
    position: relative
    left: 100vw
    transition: left 0.5s
-   // transform: translateX(100vw)
-   // transition: transform 0.5s
 
 .appearChild
    left: 0
-   // transform: translateX(0)
 
 h2
    font-weight: 500
@@ -344,6 +340,7 @@ p.title_desc
          margin: 25rem 0 20rem
          text-transform: uppercase
       p
+         font-family: $fontSecondary
          font-size: 14rem
          line-height: 1.7em
 
@@ -454,7 +451,10 @@ p.title_desc
       max-width: 360px
       &:hover .cardInfoBlock
          display: flex
-         z-index: 1
+         background-color: $bgColorSecondary
+      .cardInfoMobile
+         display: flex
+         background-color: rgba($colorHover, .5)
    img 
       display: inline-block
       width: 100%
@@ -465,7 +465,6 @@ p.title_desc
    width: 100%
    height: 100%
    color: $colorSecondary
-   background-color: $bgColorSecondary
    h3
       font-size: 18rem
       line-height: 1.33em
@@ -612,7 +611,7 @@ p.title_desc
    opacity: 0
    width: 100%
    font-family: $fontSecondary
-   transition: opacity 1s ease-in-out
+   transition: opacity .7s ease-in-out
    p
       color: $colorMain
       font-size: 18rem
@@ -739,7 +738,7 @@ p.title_desc
          color: #000
          border-color: $colorHover
       &::placeholder
-         color: $colorMain
+         color: $colorThird
          font-size: 12rem
          text-transform: uppercase
    textarea
@@ -799,3 +798,24 @@ p.title_desc
       line-height: 1.67em
       text-transform: uppercase
       font-family: $fontSecondary
+
+a.link
+   position: relative
+a.link:hover,
+.categories a.link:hover
+   transform: scale(1)
+a.link::after
+   content: ""
+   position: absolute
+   bottom: -1rem
+   left: 0
+   right: 0
+   margin: auto
+   width: 0
+   height: 1px
+   background-color: $colorSecondary
+   transition: .5s
+a.link:hover::after
+   width: 100%
+.categories a.link::after
+   background-color: $colorHover

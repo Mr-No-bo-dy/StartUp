@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Nav-Menu & Hamburger
     document.querySelector('.hamburger').onclick = navToggle;
-    document.querySelectorAll('.nav a').forEach(function (link) {
+    [...document.querySelectorAll('.nav a')].forEach(function (link) {
         link.onclick = navToggle;
     })
     function navToggle() {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('touchmove', toggleHeader);
 
     // Smooth scroll to certain block on same page
-    document.querySelectorAll('.header_menu a').forEach(function (link) {
+    [...document.querySelectorAll('.header_menu a')].forEach(function (link) {
         link.addEventListener('click', function (ev) {
             ev.preventDefault();
             const toBlock = document.querySelector(link.getAttribute('href'));
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Parallax on backgrounds
-    document.querySelectorAll('.bg_parallax').forEach(function (block) {
+    [...document.querySelectorAll('.bg_parallax')].forEach(function (block) {
         function parallax(ev) {
             let moveX = (((ev.pageX - window.scrollX) / window.innerWidth) - 0.5) * 80,
                 moveY = (((ev.pageY - window.scrollY) / window.innerHeight) - 0.5) * 30;
@@ -76,12 +76,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         block.addEventListener('mousemove', parallax);
         if (!block) block.removeEventListener('mousemove', parallax);
+
+        // Turn on transition on mouseenter
+        block.addEventListener('mouseenter', function() {
+            block.style.transition = 'background-position 0.3s';
+            setTimeout(function() {
+                block.style.transition = 'none';
+            }, 300);
+        });
+        block.addEventListener('mouseleave', function() {
+            block.style.transition = 'background-position 0.3s';
+        });
     });
 
     // Triple click trick
     let clickCount = 0, clickTimerID = null;
     document.querySelector('.triple_click').addEventListener('click', function () {
-        const hackedElems = document.querySelectorAll('.hacked');
+        const hackedElems = [...document.querySelectorAll('.hacked')];
         clickCount++;
         clearTimeout(clickTimerID);
         if (clickCount === 3) {
@@ -104,8 +115,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
     });
 
+    // Show works' info on small devices
+    function showWorksInfo() {
+        if (window.matchMedia('(max-width: 1024px)').matches) {
+            [...document.querySelectorAll('.cardInfoBlock')].forEach(function(work) {
+                work.classList.add('cardInfoMobile');
+            });
+        } else {
+            [...document.querySelectorAll('.cardInfoBlock')].forEach(function(work) {
+                work.classList.remove('cardInfoMobile');
+            });
+        }
+    }
+    showWorksInfo();
+    window.addEventListener('resize', showWorksInfo);
+
     // Fold/Unfold posts' full text
-    const texts = document.querySelectorAll('#blog .text');
+    const texts = [...document.querySelectorAll('#blog .text')];
     let fullTexts = [];
     texts.forEach(function(text, index) {
         if (text.innerText.length > 150) {
@@ -131,15 +157,15 @@ document.addEventListener('DOMContentLoaded', function () {
             text.setAttribute('data_is_full', 'false');
         }
     }
-    document.querySelectorAll('#blog .readMore').forEach(function(btn, index) {
+    [...document.querySelectorAll('#blog .readMore')].forEach(function(btn, index) {
         btn.setAttribute('data_index', index);
         btn.addEventListener('click', toggleText);
     });
 
     // Smooth appearance of content while scrolling down page
     function appearBlock() {    // Smooth appearance of blocks
-        document.querySelectorAll('.hiddenBlock').forEach(function(block) {
-            if (window.scrollY >= (block.offsetTop - window.innerHeight * 0.33)) {
+        [...document.querySelectorAll('.hiddenBlock')].forEach(function(block) {
+            if (window.scrollY >= (block.offsetTop - window.innerHeight * 0.50)) {
                 block.classList.add('appearBlock')
             // } else {
             //     block.classList.remove('appearBlock')
@@ -150,8 +176,8 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('wheel', appearBlock);
     window.addEventListener('touchmove', appearBlock);
     function appearChild() {    // Smooth appearance of blocks' main content
-        document.querySelectorAll('.hiddenChild').forEach(function(block) {
-            if (window.scrollY >= (block.offsetTop - window.innerHeight * 0.5)) {
+        [...document.querySelectorAll('.hiddenChild')].forEach(function(block) {
+            if (window.scrollY >= (block.offsetTop - window.innerHeight * 0.67)) {
                 block.classList.add('appearChild')
             // } else {
             //     block.classList.remove('appearChild')

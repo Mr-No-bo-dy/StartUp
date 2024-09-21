@@ -5,15 +5,7 @@ mixin headerMenu(items)
       ul.header_menu.flex
          for item in items 
             li
-               a(href=item.url) #{item.name} 
-
-//- mixin figureServices(item) 
-//-    figure(class="card")
-//-       figcaption 
-//-          picture
-//-             img(src=item.src + ".png" alt=item.alt class=item.click) 
-//-          h3(class=item.hack)= item.title 
-//-          p= item.description
+               a.link(href=item.url) #{item.name} 
 
 mixin figureAboutUs(item) 
    figure(class="cardDev " + item.number)
@@ -40,7 +32,7 @@ mixin cardsWorks(items)
             .cardInfo
                h3= item.title
                p= item.category.join(', ')
-               a(href=item.href).relative View
+               a.relative(href=item.href) View
 
 mixin post(item)
    .post.flex.items_stretch
@@ -60,7 +52,7 @@ mixin post(item)
                   span.status= item.status
          p.text= item.text
          p 
-            a(href="#").readMore Read more 
+            a.readMore(href="#") Read more 
 
 mixin reviews(items)
    for item in items

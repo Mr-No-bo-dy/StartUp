@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Filter of works (simple)
     let activeCategory = localStorage.getItem('filter');
     function showFilteredWorks(activeCat) {
-        document.querySelectorAll('.cardWork').forEach(work => {
+        [...document.querySelectorAll('.cardWork')].forEach(work => {
             const categories = work.getAttribute('data-category').split(',');
             if (!activeCat || categories.includes(activeCat)) {
                 work.style.display = '';
@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 work.style.display = 'none';
             }
         });
-        document.querySelectorAll('.categories a').forEach(btn => {
+        [...document.querySelectorAll('.categories a')].forEach(btn => {
             btn.classList.toggle('activeCategory', btn.getAttribute('data-category') === activeCat);
         });
     }
 
     if (activeCategory) showFilteredWorks(activeCategory);
-    document.querySelectorAll('.categories a').forEach(btn => {
+    [...document.querySelectorAll('.categories a')].forEach(btn => {
         btn.addEventListener('click', function(ev) {
             ev.preventDefault();
             activeCategory = btn.getAttribute('data-category');
@@ -44,13 +44,13 @@ document.addEventListener('DOMContentLoaded', function () {
     //         return !activeCat || categories.includes(activeCat);
     //     });
     //     showWorks(filteredWorks);
-    //     document.querySelectorAll('.categories a').forEach(btn => {
+    //     [...document.querySelectorAll('.categories a')].forEach(btn => {
     //         btn.classList.toggle('activeCategory', btn.getAttribute('data-category') === activeCat);
     //     });
     // }
 
     // if (activeCategory) setWorks(activeCategory);
-    // document.querySelectorAll('.categories a').forEach(function(btn) {
+    // [...document.querySelectorAll('.categories a')].forEach(function(btn) {
     //     btn.addEventListener('click', function(ev) {
     //         ev.preventDefault();
     //         activeCategory = btn.getAttribute('data-category');

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         animInterval = 3000,
         fadeDuration = 700;
     let currentReview = 0,
-        slideReviewsIntervalID;
+        slideReviewsIntervalID = null;
 
     // Create markers
     function createMarkers() {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Update active marker
     function updateMarkers() {
-        const markers = document.querySelectorAll('.marker');
+        const markers = [...document.querySelectorAll('.marker')];
         markers.forEach(marker => marker.classList.remove('marker_active'));
         markers[currentReview].classList.add('marker_active');
     }
@@ -49,18 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (index !== null) { // Show selected Review
                 currentReview = index;
-                console.log('show');
+                // console.log('show');
             } else { // Auto slide Reviews
                 currentReview = (currentReview + 1) % reviews.length;
-                console.log('sliding');
+                // console.log('sliding');
             }
 
             reviews[currentReview].style.display = 'block';
-            // setMinHeight();
             setTimeout(function () {
                 reviews[currentReview].classList.add('review_active');
                 updateMarkers();
-            }, 300);
+            }, 100);
         }, fadeDuration);
     }
 
@@ -73,40 +72,52 @@ document.addEventListener('DOMContentLoaded', function () {
     reviews[currentReview].classList.add('review_active');
     setMinHeight();
     createMarkers();
-    slideReviewsIntervalID = setInterval(slideReviews, animInterval);
+    // if (!isReviewsSliding) slideReviewsIntervalID = setInterval(slideReviews, animInterval);
     window.addEventListener('resize', setMinHeight);
-
-    // Stop auto slider
-    reviewsCarousel.addEventListener('mouseenter', function () {
-        clearInterval(slideReviewsIntervalID);
-        console.log('stopped');
-    });
-    reviewContainer.addEventListener('touchstart', function () {
-        clearInterval(slideReviewsIntervalID);
-        console.log('stopped');
-    });
-
-    // Start auto slider
-    reviewsCarousel.addEventListener('mouseleave', function () {
-        slideReviewsIntervalID = setInterval(slideReviews, animInterval);
-        console.log('started');
-    });
-    reviewContainer.addEventListener('touchend', function () {
-        slideReviewsIntervalID = setInterval(slideReviews, animInterval);
-        console.log('started');
-    });
 
     // Observer for auto start-stop sliding Reviews
     const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
+        if (entries[0].isIntersecting) {    // Process only the first entry
+            // Stop auto slider
+            reviewsCarousel.addEventListener('mouseenter', function () {
+                if (slideReviewsIntervalID) {
+                    clearInterval(slideReviewsIntervalID);
+                    slideReviewsIntervalID = null;
+                    // console.log('stopped');
+                }
+            });
+            reviewContainer.addEventListener('touchstart', function () {
+                if (slideReviewsIntervalID) {
+                    clearInterval(slideReviewsIntervalID);
+                    slideReviewsIntervalID = null;
+                    // console.log('stopped');
+                }
+            });
+    
+            // Start auto slider
+            reviewsCarousel.addEventListener('mouseleave', function () {
+                if (!slideReviewsIntervalID) {
+                    slideReviewsIntervalID = setInterval(slideReviews, animInterval);
+                    // console.log('started');
+                }
+            });
+            reviewsCarousel.addEventListener('touchend', function () {
+                if (!slideReviewsIntervalID) {
+                    slideReviewsIntervalID = setInterval(slideReviews, animInterval);
+                    // console.log('started');
+                }
+            });
+
+            // Auto start when return to view
+            if (!slideReviewsIntervalID) {
                 slideReviewsIntervalID = setInterval(slideReviews, animInterval);
-                console.log('in view');
-            } else {
-                clearInterval(slideReviewsIntervalID);
-                console.log('out of view');
+                // console.log('in view');
             }
-        });
+        } else {
+            clearInterval(slideReviewsIntervalID);
+            slideReviewsIntervalID = null;
+            // console.log('out of view');
+        }
     });
     observer.observe(reviewsCarousel);
 });

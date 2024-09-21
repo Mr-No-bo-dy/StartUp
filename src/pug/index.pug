@@ -51,9 +51,6 @@ html(lang="en")
                   hr
                p.title_desc We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
                .figures.flex.hiddenChild
-                  //- +figureServices(cardServices.typography) 
-                  //- +figureServices(cardServices.code) 
-                  //- +figureServices(cardServices.support) 
                   figure.card
                      figcaption
                      .card_img.flex.justify_center.click
@@ -104,11 +101,11 @@ html(lang="en")
                .flex.justify_center
                   hr
                p.categories.title_desc.flex.justify_center
-                  a#catAll.activeCategory(href="#" data-category="") All
-                  a#catBranding(href="#" data-category="Branding") Branding
-                  a#catDesign(href="#" data-category="Design") Design
-                  a#catDevelopment(href="#" data-category="Development") Development
-                  a#catStrategy(href="#" data-category="Strategy") Strategy
+                  a#catAll.link.activeCategory(href="#" data-category="") All
+                  a#catBranding.link(href="#" data-category="Branding") Branding
+                  a#catDesign.link(href="#" data-category="Design") Design
+                  a#catDevelopment.link(href="#" data-category="Development") Development
+                  a#catStrategy.link(href="#" data-category="Strategy") Strategy
                .workCards.grid.hiddenChild
                   +cardsWorks(cardWorks)
 
@@ -193,7 +190,7 @@ html(lang="en")
                            | &nbsp;We’ll contact you as as possible. We don’t reply on Monday.
                      #signUpPopUp.signUpPopUp.hidden
                         #signUpWrap.contact_form.relative
-                           h2 Are this data correct?
+                           h2 Is this data correct?
                            .message_data.text_left
                               p.name Name: 
                                  b

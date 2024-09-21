@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Email check through RegEx
     const emailRegEx = /^([a-z][a-z0-9._-]+)(@[a-z][a-z0-9_-]+)(\.[a-z][a-z]+)(\.[a-z][a-z]+)?$/gi;
     signErrors['email'] = true;
-    document.querySelectorAll('.email').forEach(function (email) {
+    [...document.querySelectorAll('.email')].forEach(function (email) {
         email.oninput = function () {
             const disabledBtn = email.closest('form').querySelector('.disabledBtn');
             let errorEmail = email.nextElementSibling,
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Name check through RegEx
     const nameRegEx = /[a-z0-9 ]+$/gi;
     signErrors['name'] = true;
-    document.querySelectorAll('.name').forEach(function (name) {
+    [...document.querySelectorAll('.name')].forEach(function (name) {
         name.oninput = function () {
             const disabledBtn = name.closest('form').querySelector('.disabledBtn');
             let errorName = name.nextElementSibling,
@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // Close popup
     function closePopup(selector) {
+        document.querySelector('#signInForm').reset();
         const popup = document.querySelector(selector);
         popup.classList.add('hidden');
         document.body.classList.remove('over_hidden');
@@ -172,6 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
             signUpForm.querySelector('[name="name"]').value = user.name;
             signUpForm.querySelector('[name="email"]').value = user.email;
             signUpForm.querySelector('[name="tel"]').value = user.tel;
+            signUpForm.querySelector('[name="subject"]').value = user.subject;
+            signUpForm.querySelector('[name="message"]').value = user.message;
             confirmBtn.removeAttribute('disabled');
         }
     }
@@ -189,16 +192,19 @@ document.addEventListener('DOMContentLoaded', function() {
             loggingUser = {
                 'name': name.value,
                 'email': email.value,
+                'date': Date.now(),
             };
         if (registeredUser && loggingUser.email === registeredUser.email && 
             loggingUser.name === registeredUser.name) {
-            // fillUserData();
+            localStorage.setItem('loggedUser', JSON.stringify(loggingUser));
             closePopup('#signInPopUp');
-            name.value = null;
-            email.value = null;
-            document.querySelector('#home .welcome').innerText = `${welcomeText}, ${user.name}`;
+            document.querySelector('#home .welcome').innerText = `${welcomeText}, ${registeredUser.name}`;
         } else {
             document.querySelector('#credentialError').innerText = 'Username or Email is incorrect';
         }
     });
+    // Session imitation (1 hour):
+    if (localStorage.getItem('loggedUser') && Date.now() < (JSON.parse(localStorage.getItem('loggedUser')).date + 60 * 60 * 1000)) {
+        document.querySelector('#home .welcome').innerText = `${welcomeText}, ${JSON.parse(localStorage.getItem('loggedUser')).name}`;
+    }
 });
