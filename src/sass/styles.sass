@@ -33,7 +33,7 @@ ul
 a 
    display: inline-block
    text-decoration: none
-   transition: .3s
+   transition: .3s ease
 
 img
    vertical-align: bottom
@@ -106,6 +106,17 @@ img
    &:hover
       color: $colorHover
       background-color: $bgColorMain
+
+.arrow
+   position: absolute
+   top: 14rem
+   left: 14rem
+   display: inline-block
+   width: 10rem
+   height: 10rem
+   border-top: 2px solid #ddd
+   border-left: 2px solid #ddd
+   transform: rotate(-45deg)
 
 .text_left
    text-align: left
@@ -377,21 +388,11 @@ p.title_desc
       &:hover 
          background-color: $bgColorSecondary
          cursor: pointer
-      span
-         position: absolute
-         top: 14rem
-         left: 14rem
-         display: inline-block
-         width: 10rem
-         height: 10rem
-         border-top: 2px solid #ddd
-         border-left: 2px solid #ddd
-         transform: rotate(-45deg)
    .carouselBtn.btnLeft
       left: 0
    .carouselBtn.btnRight
       right: 0
-      span
+      .arrow
          left: 11rem
          transform: rotate(135deg)
    .carousel_container 
@@ -410,9 +411,9 @@ p.title_desc
          transition: .3s
       &:hover img
          filter: contrast(115%)
-      &:hover .socials
+      &:hover .dev_socials
          display: block
-      .socials 
+      .dev_socials 
          display: none
          position: absolute
          bottom: 30rem
@@ -776,6 +777,30 @@ p.title_desc
    p, b
       font-size: 16rem
 
+#scrollToTopBtn
+   position: fixed
+   bottom: 3%
+   right: 3%
+   z-index: 9
+   display: none
+   opacity: 0
+   width: 36rem
+   height: 36rem
+   background-color: $colorSecondary
+   border: 2px solid $bgColorSecondary
+   border-radius: 50%
+   transition: 0.3s
+   cursor: pointer
+   &:hover 
+      transform: scale(1.1)
+#scrollToTopBtn.btn_active
+   display: inline-block
+   opacity: 1
+   .arrow
+      left: 12rem
+      border-color: $bgColorSecondary
+      transform: rotate(45deg)
+
 .footer
    padding: 95rem 0 90rem
    color: $bgColorMain
@@ -789,7 +814,11 @@ p.title_desc
       border-radius: 50%
       border: 2px solid $bgColorMain
       &:hover
-         transform: scale(1.1)
+         background-color: $bgColorMain
+      &:hover svg
+         fill: $colorHover
+      svg
+         fill: $colorSecondary
    hr
       margin: 30rem 0 27rem
       border-color: $bgColorMain

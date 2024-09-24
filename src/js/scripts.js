@@ -188,4 +188,17 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('wheel', appearChild);
     window.addEventListener('touchmove', appearChild);    
 
+    // Scroll to top button
+    function scrollToTop() {
+        const scrollToTopBtn = document.querySelector('#scrollToTopBtn');
+        if (window.scrollY >= (document.documentElement.scrollHeight * 0.5 - window.innerHeight)) {
+            scrollToTopBtn.classList.add('btn_active');
+            scrollToTopBtn.addEventListener('click', function() {
+                document.querySelector('#header').scrollIntoView({behavior: 'smooth'});
+            });
+        } else {
+            scrollToTopBtn.classList.remove('btn_active');
+        }
+    }
+    window.addEventListener('scroll', scrollToTop);
 });

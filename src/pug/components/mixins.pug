@@ -14,7 +14,7 @@ mixin figureAboutUs(item)
             picture
                source(srcset=item.src + ".webp" type="image/webp") 
                img(src=item.src + ".jpg" alt=item.alt) 
-            .socials 
+            .dev_socials 
                each social in ['facebook', 'twitter', 'google', 'linkedin']
                   if item[social]
                      a(href=item[social]) 

@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
     reviews[currentReview].classList.add('review_active');
     setMinHeight();
     createMarkers();
-    // if (!isReviewsSliding) slideReviewsIntervalID = setInterval(slideReviews, animInterval);
     window.addEventListener('resize', setMinHeight);
 
     // Observer for auto start-stop sliding Reviews

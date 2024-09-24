@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
         cardWidth = cards[0].offsetWidth,
         gap = 29.33,
         slideDistance = cardWidth + gap,
-        isSliding = false;
+        isSliding = false,
+        swipeStartX = 0,
+        swipeEndX = 0;
 
     // Calculate & update card's adapted width
     function updateCardWidths() {
@@ -94,4 +96,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 50);
     }
     btnLeft.addEventListener('click', slideLeft);
+
+    // Swipe carousel
+    carousel.addEventListener('touchstart', function(ev) {
+        // console.log(ev);
+        swipeStartX = ev.touches[0].pageX;
+    });
+    carousel.addEventListener('touchmove', function(ev) {
+        swipeEndX = ev.touches[0].pageX;
+    });
+    carousel.addEventListener('touchend', function() {
+        const swipeDistance = swipeEndX - swipeStartX;
+        if (swipeDistance > 50) {
+            slideLeft();  // Swipe to right
+        } else if (swipeDistance < -50) {
+            slideRight(); // Swipe to left
+        }
+        swipeStartX = 0;
+        swipeEndX = 0;
+    });
 });
