@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fill registered user's data into message form
     const welcomeText = document.querySelector('#home .welcome').innerText;
     function fillUserData () {
-        if (localStorage.getItem('user') !== null) {
+        if (localStorage.getItem('loggedUser') !== null) {
             const signUpForm = document.querySelector('#signUpForm');
             let user = JSON.parse(localStorage.getItem('user'));
             signUpForm.querySelector('[name="name"]').value = user.name;
@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (registeredUser && loggingUser.email === registeredUser.email && 
             loggingUser.name === registeredUser.name) {
             localStorage.setItem('loggedUser', JSON.stringify(loggingUser));
+            fillUserData();
             closePopup('#signInPopUp');
             document.querySelector('#home .welcome').innerText = `${welcomeText}, ${registeredUser.name}`;
         } else {
@@ -206,5 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Session imitation (1 hour):
     if (localStorage.getItem('loggedUser') && Date.now() < (JSON.parse(localStorage.getItem('loggedUser')).date + 60 * 60 * 1000)) {
         document.querySelector('#home .welcome').innerText = `${welcomeText}, ${JSON.parse(localStorage.getItem('loggedUser')).name}`;
+    } else {
+        localStorage.removeItem('loggedUser');
     }
 });
