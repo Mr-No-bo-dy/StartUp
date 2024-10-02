@@ -26,7 +26,7 @@ body
    font-family: $fontMain
    text-align: center
    &::-webkit-scrollbar
-      width: 10px
+      width: 15px
       background-color: $colorMain
    &::-webkit-scrollbar-thumb
       background-color: $bgColorSecondary
@@ -45,7 +45,7 @@ img
 
 .wrapper
    margin: auto
-   padding: 0 15px
+   padding: 0 15rem
    max-width: 1170px
    width: calc(90% + 30rem)
 
@@ -596,9 +596,23 @@ p.title_desc
 .clients
    padding: 100rem 0
    background-color: $bgColorThird
+
+.slider_auto
+   overflow-x: hidden
+   flex-wrap: nowrap
+   column-gap: 0
    .brands
-      column-gap: 60rem
       margin-bottom: 20rem
+      white-space: nowrap
+      animation: slide 15s linear infinite
+      img
+         margin: 0 30rem
+         vertical-align: middle
+   @keyframes slide 
+      0% 
+         transform: translateX(0)
+      100%
+         transform: translateX(-100%)
 
 .review_container
    position: relative

@@ -186,7 +186,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     window.addEventListener('scroll', appearChild);
     window.addEventListener('wheel', appearChild);
-    window.addEventListener('touchmove', appearChild);    
+    window.addEventListener('touchmove', appearChild);
+
+    // Brands' auto-slider additions:
+    const sliderAuto = document.querySelector('.slider_auto'),
+    brands = document.querySelector('.brands');
+        // Clonning .brands twice
+    for (let i = 0; i < 2; i++) {
+        const clone = brands.cloneNode(true);
+        sliderAuto.appendChild(clone);
+    }
+        // Stop animation onmouseenter
+    sliderAuto.addEventListener('mouseenter', function() {
+        [...document.querySelectorAll('.brands')].forEach(function(brand) {
+            brand.style.animationPlayState = 'paused';
+        })
+    });
+        // Run animation onmouseleave
+    sliderAuto.addEventListener('mouseleave', function() {
+        [...document.querySelectorAll('.brands')].forEach(function(brand) {
+            brand.style.animationPlayState = 'running';
+        })
+    });
 
     // Scroll to top button
     function scrollToTop() {
