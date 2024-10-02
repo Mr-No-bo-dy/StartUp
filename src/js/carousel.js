@@ -15,7 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Calculate & update card's adapted width
     function updateCardWidths() {
-        if (window.innerWidth >= 1100) {
+        if (window.innerWidth >= 1920) {
+            cardWidth = (carousel.offsetWidth - 5 * gap) / 6;
+            visibleCards = 6;
+        } else if (window.innerWidth >= 1440) {
+            cardWidth = (carousel.offsetWidth - 4 * gap) / 5;
+            visibleCards = 5;
+        } else if (window.innerWidth >= 1100) {
             cardWidth = (carousel.offsetWidth - 3 * gap) / 4;
             visibleCards = 4;
         } else if (window.innerWidth >= 800) {

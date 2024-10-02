@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Brands' auto-slider additions:
     const sliderAuto = document.querySelector('.slider_auto'),
     brands = document.querySelector('.brands');
-        // Clonning .brands twice
-    for (let i = 0; i < 2; i++) {
+        // Clonning .brands thrice
+    for (let i = 0; i < 3; i++) {
         const clone = brands.cloneNode(true);
         sliderAuto.appendChild(clone);
     }
